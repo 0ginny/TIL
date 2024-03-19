@@ -17,20 +17,36 @@ input = sys.stdin.readline
 
 A,B = map(int,input().split())
 
+
+def tens(n): # 자릿수 구하는 함수
+    return len(list(str(n)))
+
+golds = []
+
+def recul(s,t) : # t 자릿수 모든 금민수 저장
+    if len(s) == t:
+        global golds
+        golds.append(s)
+        return
+    unit = ["4", "7"]
+    for u in unit:
+        ns = s + u
+        recul(ns,t)
+
+A_ten = tens(A)
+B_ten = tens(B)
+
+#가능한 모든 금민수 저장
+for t in range(A_ten,B_ten+1):
+    recul("",t)
+
 cnt = 0
-
-def chk(n):
-    global cnt
-    s = set(list(str(n)))
-    # print(s)
-    if s in [{'4','7'},{'7'},{'4'}]:
+# 그중 범위 이상 금민수 숫자 확인
+for g in golds:
+    if not ( A <= int(g) <= B):
         cnt += 1
-
-for n in range(A,B+1):
-    chk(n)
-print(cnt)
-
+# 모든 금민수에서 cnt 수 빼기
+print(len(golds) - cnt)
 """
-1 차 시도 시간 초과
-2 차는 범위를 줄여서 실행해보자.
+2차 금민수 완전 탐색 후 범위 미 포함 제거로 성공
 """
