@@ -43,6 +43,7 @@ cnt = 0
 """
 
 while l < N-1:
+    print(f'l : {l}, r : {r}, cnt : {cnt}, nd : {nd}')
     if nd[nl[r+1]] < 1 :
         nd[nl[r]] += 1
         r += 1
