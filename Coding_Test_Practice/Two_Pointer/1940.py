@@ -14,7 +14,17 @@
         - 시간복잡도 N*(N-1) 225000000
         - 아주 조금 넘길 거 같은데?
             - 대신 숫자를 찾으면 거기서 멈추면 가능하지 않을까?
+            - 실패
+    - 투포인터?
+        - 일단 ls 오름차순 정렬
+        - left 맨 왼, right 맨 오른
+            - left가 올라가면서 sum >= m 인지 확인
+                - sum == m 이면 cnt += 1
+                - left 고정 right 내려가면서 sum <= 인지 확인
+                    - 작아졌으면 다시 left 올라가며 반복
+            - left = right 되면 종료
 
+            - 시간복잡도 : NlogN  + N  = NlogN 100000까지 가능
 """
 import sys
 
@@ -23,12 +33,16 @@ input = sys.stdin.readline
 N = int(input())
 M = int(input())
 ls = list(map(int,input().split()))
+ls.sort()
 
 cnt = 0
-for i in range(N-1):
-    for j in range(i,N):
-        if ls[i] + ls[j] == M :
+left = 0
+right = N-1
+while (left != right):
+    if (ls[left] + ls[right]) <= M:
+        if (ls[left] + ls[right]) == M:
             cnt += 1
+        left += 1
+    else: #(ls[left] + ls[right]) > M:
+        right -= 1
 print(cnt)
-
-# 시간초과 실패
