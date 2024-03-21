@@ -30,25 +30,33 @@ for d in set(nl):
     nd[d] = 0
 
 l , r = 0 , 0
-f = nl[0]
+
 cnt = 0
 
 """
 논리 다시 전개해
-- 언제까지 돌꺼야? : l = r = last
-- r은 언제 더해줘? r+1 까지 가면 문제가 생길 때까지
-    - 그 때는 어떻게 돌아? l이 r과 같아질 때까지 돌아 
-        - 같아지면 ? r, l = r+1로 바꿔줘.
-        - 그리고 반복
+- 삼각수 같은 거야. 팩토리얼을 구현하려면 r-l을 해주면 돼.
+- 언제까지?
+    r = l = last
+- 언제 숫자 더해?
+    - r 이 두번 나오기 전까지 올라가면서 
+        - l이 r의 수가 0이 될 때까지 올라가면서 
+    - r = l = last면 종료 
+
+1 2 3 2 4 5 3 를 생각해보자
+
 """
 
-while l < N-1:
-    print(f'l : {l}, r : {r}, cnt : {cnt}, nd : {nd}')
-    if nd[nl[r+1]] < 1 :
+while r < N :
+    # print(f'l : {l}, r : {r}', end = '\t')
+    if nd[nl[r]] < 1 :
         nd[nl[r]] += 1
         r += 1
-    else :
-        nd[nl[l]] -= 1
-        l += 1
-    cnt += 1
+        cnt += r - l
+    else:
+        while nd[nl[r]] == 1:
+            nd[nl[l]] -= 1
+            l += 1
+
+    # print(f' cnt : {cnt}, nd : {nd}')
 print(cnt)
