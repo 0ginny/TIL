@@ -4,9 +4,10 @@ from tkinter import *
 from PIL import Image
 from PIL import ImageTk
 from tkinter import filedialog
+import os
 
-face_cascade_name = '../opencv/data/haarcascades/haarcascade_frontalface_alt.xml'
-eyes_cascade_name = '../opencv/data/haarcascades/haarcascade_eye_tree_eyeglasses.xml'
+face_cascade_name = './data/haarcascades/haarcascade_frontalface_alt.xml'
+eyes_cascade_name = './data/haarcascades/haarcascade_eye_tree_eyeglasses.xml'
 file_name = 'video/obama_01.mp4'
 title_name = 'Haar cascade object detection Video'
 frame_width = 500
@@ -26,6 +27,10 @@ def selectFile():
     file_name =  filedialog.askopenfilename(initialdir = "./video",title = "Select file",filetypes = (("MP4 files","*.mp4"),("all files","*.*")))
     print('File name : ', file_name)
     global cap
+    file_name = np.fromfile(file_name, np.uint8)
+    read_image = cv2.imdecode(file_name,cv2.IMREAD_COLOR)
+    read_image = cv2.(file_name,cv2.IMREAD_COLOR)
+
     cap = cv2.VideoCapture(file_name)
     detectAndDisplay()
     
