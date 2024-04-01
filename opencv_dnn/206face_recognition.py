@@ -3,7 +3,7 @@ import face_recognition
 import pickle
 import time
 
-image_file = 'image/marathon_01.jpg'
+image_file = './image/tedy_test.jpg'
 encoding_file = 'encodings.pickle'
 unknown_name = 'Unknown'
 # Either cnn  or hog. The CNN method is more accurate but slower. HOG is faster but less accurate.
@@ -42,7 +42,7 @@ def detectAndDisplay(image):
             # loop over the matched indexes and maintain a count for
             # each recognized face face
             for i in matchedIdxs:
-                name = data["names"][i]
+                name = data["name"][i]
                 counts[name] = counts.get(name, 0) + 1
 
             # determine the recognized face with the largest number of
@@ -78,6 +78,7 @@ def detectAndDisplay(image):
 # load the known faces and embeddings
 data = pickle.loads(open(encoding_file, "rb").read())
 
+print(data)
 # load the input image
 image = cv2.imread(image_file)
 detectAndDisplay(image)

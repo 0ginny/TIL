@@ -16,32 +16,38 @@
 """
 
 import heapq
+import sys
 
 
-
-def mst(s,d) :
-    heap = [[0, s]]
-
-    while heap:  # heap이 빌때까지 반복
-        w, en = heapq.heappop(heap)
-        if chk[each_node] == False:  # 최소 가중치의 노드가 지나지 않았을 경우만
-            chk[each_node] = True
-            rs += w
-            for next_edge in edge[each_node]:  # 해당 노드의 모든 간선을 힙에 추가가            if chk[next_edge[1]] ==False :
-                heapq.heappush(heap, next_edge)
-
-
-
+n,s,a,b = 6,4,6,2
+fares = [[4, 1, 10], [3, 5, 24], [5, 6, 2], [3, 1, 41], [5, 1, 24], [4, 6, 50], [2, 4, 66], [2, 3, 22], [1, 6, 25]]
 road = []
 def solution(n, s, a, b, fares):
-    answer = 0
-    road = [] * (n+1)
+    INF = sys.maxsize
+    answer = INF
+    road = [[] for _ in range(n+1)]
     for l in fares:
         road[l[0]].append([l[2],l[1]])
         road[l[1]].append([l[2], l[0]])
 
     heap = [[0,s]]
 
-    return answer
+    fare = [INF] * (n+1)
+    fare[s] = 0
+    while heap :
+        w, v = heapq.heappop(heap)
+        if w > fare[v] :
+            continue
+        for nw, nv in road[v] :
+            if fare[nv] > nw + w :
+                fare[nv] = nw+ w
+                heapq.heappush(heap,(fare[nv],nv))
+
+    # 이중 최소 값 구하기
+    for cv in range(1,n+1):
+        answer = min(answer,fare[cv] )
+
+    return fare
 
 
+print(solution(n,s,a,b,fares))

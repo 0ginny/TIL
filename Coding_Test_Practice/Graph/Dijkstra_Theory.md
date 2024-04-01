@@ -7,14 +7,15 @@
     - 힙에 추가되면 최소 거리를 거리 배열 초기화
       - 추가되면 거리 갱신 및 힙에 추가
 
-```
+```python
 dist[K] = 0
 heapq.heappush(heap,(0,K))
 
 while heap:
   w,v = heapq.heappop(heap)
   if w!= dist[v] : continue
-  for nw, nv in edge[v] +nw:
-  dist[nv] = dist[v] + nw
-  heapq.heappush(heap,(dist[nv],nv))
+  for nw, nv in edge[v]:
+    if dist[nv] > w + nw :
+        dist[nv] = dist[v] + nw
+        heapq.heappush(heap,(dist[nv],nv))
 ```

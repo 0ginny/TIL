@@ -14,8 +14,6 @@ frame_width = 500
 
 def selectFile(): # 파일 선택후 반복
     file_name =  filedialog.askopenfilename(initialdir = "./image",title = "Select file",filetypes = (("jpeg files","*.jpg"),("all files","*.*")))
-
-    file_name = os.path.realpath(file_name)
     print('File name : ', file_name)
     # read_image = cv2.imdecode(file_name,cv2.IMREAD_COLOR)
     read_image = cv2.imread(file_name)
