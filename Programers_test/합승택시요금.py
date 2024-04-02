@@ -18,36 +18,45 @@
 import heapq
 import sys
 
-
+INF = sys.maxsize
 n,s,a,b = 6,4,6,2
 fares = [[4, 1, 10], [3, 5, 24], [5, 6, 2], [3, 1, 41], [5, 1, 24], [4, 6, 50], [2, 4, 66], [2, 3, 22], [1, 6, 25]]
 road = []
+
+
+
 def solution(n, s, a, b, fares):
-    INF = sys.maxsize
+    INF = 200* 100000 + 1
     answer = INF
-    road = [[] for _ in range(n+1)]
+    road = [[] for _ in range(n)]
     for l in fares:
-        road[l[0]].append([l[2],l[1]])
-        road[l[1]].append([l[2], l[0]])
+        road[l[0]-1].append([l[2],l[1]-1])
+        road[l[1]-1].append([l[2],l[0]-1])
 
-    heap = [[0,s]]
+    #daijstra algorithm
+    def dijstra(s):
+        heap = [[0, s]]
 
-    fare = [INF] * (n+1)
-    fare[s] = 0
-    while heap :
-        w, v = heapq.heappop(heap)
-        if w > fare[v] :
-            continue
-        for nw, nv in road[v] :
-            if fare[nv] > nw + w :
-                fare[nv] = nw+ w
-                heapq.heappush(heap,(fare[nv],nv))
+        fare = [INF] * n
+        fare[s] = 0
+        while heap:
+            w, v = heapq.heappop(heap)
+            if w > fare[v]:
+                continue
+            for nw, nv in road[v]:
+                if fare[nv] > nw + w:
+                    fare[nv] = nw + w
+                    heapq.heappush(heap, (fare[nv], nv))
+        return fare
 
-    # 이중 최소 값 구하기
-    for cv in range(1,n+1):
-        answer = min(answer,fare[cv] )
+    fl = [dijstra(i) for i in range(n)]
 
-    return fare
+    # answering
+    for vvv in range(n):
+        # print(f' v : {vvv}, answer : {answer}, {fl[s][vvv]} + {fl[vvv][a]} + {fl[vvv][b]}')
+        answer = min(fl[s-1][vvv] + fl[vvv][a-1] + fl[vvv][b-1], answer)
+
+    return answer
 
 
 print(solution(n,s,a,b,fares))

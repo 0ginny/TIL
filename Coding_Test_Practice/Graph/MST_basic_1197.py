@@ -33,5 +33,6 @@ while heap: # heap이 빌때까지 반복
     if chk[each_node] == False: #최소 가중치의 노드가 지나지 않았을 경우만
         chk[each_node ] = True
         rs += w
-        for next_edge in edge[each_node]: #해당 노드의 모든 간선을 힙에 추가가            if chk[next_edge[1]] ==False :
+        for next_edge in edge[each_node]: #해당 노드의 모든 간선을 힙에 추가가
+            if chk[next_edge[1]] ==False :
                 heapq.heappush(heap, next_edge)
