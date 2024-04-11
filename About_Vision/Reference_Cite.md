@@ -12,3 +12,15 @@
 [Open CV로 자신만의 객체 탐지기 만들기](https://medium.com/@vipulgote4/guide-to-make-custom-haar-cascade-xml-file-for-object-detection-with-opencv-6932e22c3f0e)
 
 [Dlib으로 자신만의 객체 탐지기 만들기](https://learnopencv.com/training-a-custom-object-detector-with-dlib-making-gesture-controlled-applications/)
+
+## 얼굴분류
+
+[얼굴 인식: 문헌 리뷰](https://www.researchgate.net/publication/233864740_Face_Recognition_A_Literature_Review)
+
+[LBPH논문1](https://www.researchgate.net/publication/327980768_LBPH_Based_Improved_Face_Recognition_At_Low_Resolution)
+
+[LBPH논문2](https://ieeexplore.ieee.org/document/8396183)
+
+[LBPH논문3](https://www.researchgate.net/publication/333511197_LBPH-based_Enhanced_Real-Time_Face_Recognition)
+
+[Dlib으로 얼굴 인식하기](https://www.pyimagesearch.com/2018/06/18/face-recognition-with-opencv-python-and-deep-learning/)
