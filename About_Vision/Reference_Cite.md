@@ -33,3 +33,13 @@
 
 [CSRT 알고리즘](https://arxiv.org/pdf/1611.08461.pdf)
 
+
+## autoencoder
+
+[오토인코더 소개](https://arxiv.org/abs/2003.05991)
+
+[오토인코더 문헌 리뷰 1](https://xuan-li.github.io/post/autoencoder_review/)
+
+[오토인코더 문헌 리뷰 2](https://ieeexplore.ieee.org/document/8474425)
+
+[오토인코더 이론과 적용](https://www.researchgate.net/publication/332712793_Theories_and_Applications_of_Auto-Encoder_Neural_Networks_A_Literature_Survey)
