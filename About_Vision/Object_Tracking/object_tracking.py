@@ -1,7 +1,7 @@
 import cv2
 
-#tracker = cv2.TrackerKCF_create()
-tracker = cv2.TrackerCSRT_create()
+tracker = cv2.TrackerKCF_create()
+# tracker = cv2.TrackerCSRT_create()
 
 video = cv2.VideoCapture('street.mp4')
 ok, frame = video.read()

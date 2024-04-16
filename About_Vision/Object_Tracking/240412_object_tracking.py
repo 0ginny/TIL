@@ -1,9 +1,10 @@
 import cv2
 
 # create tracker
-tracker = cv2.TrackerKCF_create()
+# tracker = cv2.TrackerKCF_create()
 
-video = cv2.VideoCapture('race.mp4')
+tracker = cv2.TrackerCSRT_create()
+video = cv2.VideoCapture('street.mp4')
 
 # read first Frame
 ok, frame = video.read()

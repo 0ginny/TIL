@@ -24,3 +24,12 @@
 [LBPH논문3](https://www.researchgate.net/publication/333511197_LBPH-based_Enhanced_Real-Time_Face_Recognition)
 
 [Dlib으로 얼굴 인식하기](https://www.pyimagesearch.com/2018/06/18/face-recognition-with-opencv-python-and-deep-learning/)
+
+## tracking
+
+[KCF 알고리즘](https://arxiv.org/abs/1404.7584)
+
+[KCF 알고리즘 개선하기](https://www.researchgate.net/publication/327844935_Improvement_of_the_KCF_Tracking_Algorithm_through_Object_Detection)
+
+[CSRT 알고리즘](https://arxiv.org/pdf/1611.08461.pdf)
+
