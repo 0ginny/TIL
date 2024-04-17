@@ -43,3 +43,14 @@
 [오토인코더 문헌 리뷰 2](https://ieeexplore.ieee.org/document/8474425)
 
 [오토인코더 이론과 적용](https://www.researchgate.net/publication/332712793_Theories_and_Applications_of_Auto-Encoder_Neural_Networks_A_Literature_Survey)
+
+## Yolo
+
+[YOLO 논문](https://arxiv.org/abs/1506.02640)
+
+[YOLO v3 논문](https://arxiv.org/abs/1804.02767)
+
+[YOLO v4 논문](https://arxiv.org/abs/2004.10934)
+
+[YOLO 문헌조사](https://www.irjet.net/archives/V7/i6/IRJET-V7I6576.pdf)
+
