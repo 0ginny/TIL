@@ -12,3 +12,16 @@
 
 정확히는 Branch Point
 
+# 명령어
+
+### 브랜치 보기
+- git branch
+  - see all branch and my head(*)
+
+### 브랜치 만들기
+- git branch BranchNameIWant
+  - 기억할 건 , 만들었다고 바로 그 브랜치로 가는 것이 아니야.
+  - 헤드를 변경해줘야해.
+
+### 헤드 바꾸기
+- git switch 목표브랜치
