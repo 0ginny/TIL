@@ -137,3 +137,39 @@ _딥러닝에서 log 함수로 손실을 계산하는데, 그 이유는 어차�
 심지어 변화폭이 기하급수적으로 작아서 계산하기 용이하기 때문에_
 ---
 ---
+_엔트로피에 대해서, 데이터 공학 쪽에선, 높은 엔트로피는 해당 데이터셋이 많은 가변성을 가지고 있다는 의미이고,
+낮은 엔트로피는 대부분의 값들이 반복되고 고착화 된다는 의미야._
+
+_엔트로피와 균등분배Variance?에 대해선, 엔트로피는 비선형값이고, 분배에 대한 가정치?가 없는데 반해
+균등분배는 효율성에 기준을 두고 일반 대이터를 대강 가정하는 거야. 매우 복잡하구먼_
+
+_entropy :: H(p,q) = - sum(plog(p)) :: 
+한 요소의 분배 확률을 나타내_
+
+_crossentropy :: H(p,q) = - Sum(plog(q)) :: 
+두 분배 가능성에 대한 관계를 나타내_
+
+```python
+# 확률은 가능한 확률가 가능하지 않은 확률 둘 다 있는 거야. softmax와 잘 어울리네
+import numpy as np
+P = [.25, .75]
+H = 0
+# calculate entropy / len(P) == 2 ,binary cross entropy
+for p in P:
+    H -= p * np.log(p)
+
+# cross entropy
+# p와 q 위치를 바꾸면 값이 달라져.
+P = [1.0, 0.0000000001]
+Q = [.25, .75]
+for i in range(len(P)):
+    H -= P[i]* np.log(Q[i])
+# binary cross entropy
+# P[1] << 0
+H = -np.log(Q[0])
+
+import torch 
+# pytorch
+torch.nn.functional.F.binary_cross_entropy(torch.tensor(Q),torch.tensor(P))
+
+```
