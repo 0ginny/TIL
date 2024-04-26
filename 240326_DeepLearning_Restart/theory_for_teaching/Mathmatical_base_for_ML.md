@@ -173,3 +173,7 @@ import torch
 torch.nn.functional.F.binary_cross_entropy(torch.tensor(Q),torch.tensor(P))
 
 ```
+---
+---
+
+_Tip. softmax의 최고 확률값을 알고 싶을 때, argmax() 사용_
