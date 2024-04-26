@@ -131,3 +131,9 @@ import torch as nn
 softfun = nn.Softmax(dim = 0)
 sigmaT = softfun(torch.Tensor(nv))
 ```
+---
+---
+_딥러닝에서 log 함수로 손실을 계산하는데, 그 이유는 어차피 log 값이 작으면 해당 값도 작은데,
+심지어 변화폭이 기하급수적으로 작아서 계산하기 용이하기 때문에_
+---
+---
