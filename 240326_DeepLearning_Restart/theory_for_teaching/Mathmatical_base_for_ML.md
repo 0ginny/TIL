@@ -82,3 +82,25 @@ np.transpose()
 torch.tensor.T
 
 ```
+
+그래서 다음으로 dot product 가 어디에 쓰이는지 확인하자면
+
+ann 에선 이전에 말했듯이 가중치 벡터와 데이터 벡터를 곱해서 하나의 스칼라 값을 낼 수 있습니다.
+
+그리고 이후 이미지 분류에 사용되는 CNN 에서 Convolution 이라는 개념이 나오는데,
+
+그 때 우리의 2차원 데이터와 convoulution layer의 filter로 값을 내적해줘서,
+
+복잡한 이미지 데이터에서 특징 데이터를 추출할 수 있습니다.
+
+수학적으로 보자면 두 값 사의의 상관관계를 숫자로 표현했다고 이해하면 될 거 같습니다.
+
+```python
+# numpy
+np.dot(nv1, nv2)
+# np.sum(nv1 * nv2) 와 결과가 같아
+
+# pytorch
+torch.dot(tv1, tv2)
+torch.sum(tv1 * tv2)
+```
