@@ -51,3 +51,34 @@ categorical은 목차가 있는 성질이라고 보시면 됩니다. 분류를 �
 
 labelencoding과 onehotencoding을 주로쓰는데 이에 대해선 실습에서 설명해드리겠습니다.
 
+---
+
+다음으로 전치(Transpose)에 대해서 간단히 설명해드릴게요
+
+우리가 ML에선 데이터에 가중치를 곱해준다고 했잖아요? 근데 하나하나 곱하게 되면 너무 귀찮잖아요.
+
+그래서 행렬의 내적(dot product)으로 한번에 곱하는 방법을 사용해요.
+
+그런데 이 내적을 위해선 행렬의 크기가 조정이 되야 하는데요.
+
+만약 m x n 크기의 행렬에 내적을 해주려면 n x ? 의 행렬만 곱할 수 있어요.
+
+그래서 m x n 행렬에 m x n 행렬을 곱하려면 n x m 으로 형태를 바꿔줘야 하는데 
+
+그 방법이 전치 입니다.
+
+단순히 행과 열만 바꿔주면 되요.
+
+그리고 우리는 전치 transpose의 앞 글자를 따서 T 를 붙여서 표시하겠습니다.
+
+```python
+# numpy
+import numpy as np
+
+np.array.T
+np.transpose()
+
+# pytorch
+torch.tensor.T
+
+```
