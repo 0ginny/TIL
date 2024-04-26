@@ -106,3 +106,28 @@ torch.dot(tv1, tv2)
 torch.sum(tv1 * tv2)
 ```
 
+다음으로 우리가 사용할 활성화 함수에 대해 몇가지 중요한 것들만 소개할게요.
+
+첫번째로 softmax 함수가 있습니다.
+
+이 함수는 카테고리 분류할 때 많이 쓰이는데요.
+
+그 이유는 이 함수의 결과는 각 요소의 합이 1인 벡터로 나오기 때문입니다.
+
+그래서 예측값이 원숭이 인지 강아지인지, 고양이인지 확률로 나타내 줄 수 있는 함수입니다.
+
+예를들어 딥러닝의 결과로 [20, -21, 2, 5] 이런 결과가 나왔을 때,
+
+이러한 단순한 숫자를 확률로 나타내 줄 수 있는 함수입니다.
+
+```python
+import numpy as np
+
+num = np.exp(nv)
+den = np.sum(np.exp(nv))
+sigma = num /den
+
+import torch as nn
+softfun = nn.Softmax(dim = 0)
+sigmaT = softfun(torch.Tensor(nv))
+```
