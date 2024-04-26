@@ -99,8 +99,10 @@ ann 에선 이전에 말했듯이 가중치 벡터와 데이터 벡터를 곱해
 # numpy
 np.dot(nv1, nv2)
 # np.sum(nv1 * nv2) 와 결과가 같아
+nv1 @ nv2
 
 # pytorch
 torch.dot(tv1, tv2)
 torch.sum(tv1 * tv2)
 ```
+
