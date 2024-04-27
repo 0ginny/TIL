@@ -222,3 +222,26 @@ sampling variability (표본 가변성) 때문인데, 표본이 달라지면 평
 - Complex system : 생태계나 시스템은 하나의 요인이 결정하는 것이 아니라 무수히 많은 변수들이 영향을 주고받고 있어.
 
 이 표본 변동성은, 모집단이 커질 수록, 뽑는 표본의 수가 클 수록 전체 평균에 근사하겓 돼
+
+---
+---
+
+이러한 변동성 때문에 실험을 할때 값이 달라질거야.
+
+그래서 python에서 seeding을 통해 변동성을 고정할수 있어.
+
+```python
+np.random.seed(42)
+
+randseed = np.random.RandomState(42)
+
+randseed1.randn(5)
+randseed1.randn(5)
+#  이 둘 값은 달라, 근데 이 코드를 반복하면 이전과 같은 값을 얻을 수 있어.
+# 이렇게 재현은 가능하지만 랜덤 값이 달라지게 하는 상황이 있을 수있어서. 더 많이 쓰여
+
+torch.manual_seed(42)
+```
+
+---
+---
