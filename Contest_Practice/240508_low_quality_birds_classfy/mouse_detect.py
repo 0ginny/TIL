@@ -42,6 +42,9 @@ def mouse_callback(event, x, y, flags, param):
             cv2.imwrite(cropped_image_path, cropped_image)
 
             # cv2.imshow('Cropped Image', cropped_image)
+            # 키 입력 대기
+
+        # 창 닫기
         cv2.destroyAllWindows()
 
 def main():
@@ -56,12 +59,15 @@ def main():
     # 마우스 이벤트 콜백 함수 설정
     cv2.setMouseCallback('Image', mouse_callback)
 
-    # 키 입력 대기
+    # # 키 입력 대기
+    # cv2.waitKey(0)
+    #
+    # # 창 닫기
+    # cv2.destroyAllWindows()
     cv2.waitKey(0)
 
     # 창 닫기
     cv2.destroyAllWindows()
-
 
 if __name__ == '__main__':
     main()
