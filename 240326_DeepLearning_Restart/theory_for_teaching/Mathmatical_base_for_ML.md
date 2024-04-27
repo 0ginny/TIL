@@ -189,3 +189,21 @@ min2 = torch.min(X,axis = 0)
 min2.values # min
 min2.indices #argmin
 ```
+
+---
+---
+분산(variance)과 표준 편차(standard variance)에 대해선 L1, L2 정규화할 때 사용할 거야.
+```python
+var1 = np.var(X)
+var2 = (1/(n-1)) * np.sum((x-mean) ** 2)
+# 값이 다를거야. 그이유는 편향때문에.
+# var1 = (1/(n)) * np.sum((x-mean) ** 2)
+# 그래서 편향이 있어.
+# 정확한 값
+var3 = np.var(X, ddof = 1)
+# 그러나 사실 데이터 수가 커지면 큰 차이는 없어.
+
+
+```
+---
+---
