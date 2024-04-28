@@ -189,3 +189,4 @@ min2 = torch.min(X,axis = 0)
 min2.values # min
 min2.indices #argmin
 ```
+
