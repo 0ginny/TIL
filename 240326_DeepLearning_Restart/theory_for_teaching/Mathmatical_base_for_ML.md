@@ -267,4 +267,12 @@ stats.ttest_ind(data2,data1)
 
 +++ 그 일이 실제 일어날 확률을 나타낸 지표 p-value
 
-[https://justdoitman.tistory.com/51]
+확률밀토 함수에서 특정 값 이상 혹은 이하의 넓이로, 확률을 나타내어, 통계적 결과의 신뢰성을 보여주는 값.
+
+그래서 확률밀도 함수에서 t-test로 t-score(value)를 얻고, 그 이상, 이하 값으로 p-value를 얻어서 신뢰도를 알 수 있어.
+
+p-value가 낮을 수록 그 표본의 신뢰도가 높다는 의미, 
+
+p-value는 샘플링 데이터가 우연히 일어날 확률을 의미
+
+[p_value blog](https://justdoitman.tistory.com/51)
