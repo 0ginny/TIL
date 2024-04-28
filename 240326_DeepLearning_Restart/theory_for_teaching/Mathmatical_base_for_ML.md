@@ -189,4 +189,82 @@ min2 = torch.min(X,axis = 0)
 min2.values # min
 min2.indices #argmin
 ```
+---
+---
+분산(variance)과 표준 편차(standard variance)에 대해선 L1, L2 정규화할 때 사용할 거야.
+```python
+var1 = np.var(X)
+var2 = (1/(n-1)) * np.sum((x-mean) ** 2)
+# 값이 다를거야. 그이유는 편향때문에.
+# var1 = (1/(n)) * np.sum((x-mean) ** 2)
+# 그래서 편향이 있어.
+# 정확한 값
+var3 = np.var(X, ddof = 1)
+# 그러나 사실 데이터 수가 커지면 큰 차이는 없어.
 
+
+```
+---
+---
+딥러닝에는 왜 많은 양의 데이터가 필요할까??
+
+random sampling에 대해서
+
+sampling variability (표본 가변성) 때문인데, 표본이 달라지면 평균같은 특징 데이터도 달라지기 때문이야.
+
+그래서 단순 전체를 이해하기 위한 샘플링 측정이 한 번이면, 신뢰도할 수 없지.
+
+표본 가변성은 아래와 같은 요인들에 의해 생겨
+
+- 자연적 가변 : 모든 개체가 같을 순 없으니,
+- Measurement noise : 측정 센서가 완전히 정확할 수 없어
+- Complex system : 생태계나 시스템은 하나의 요인이 결정하는 것이 아니라 무수히 많은 변수들이 영향을 주고받고 있어.
+
+이 표본 변동성은, 모집단이 커질 수록, 뽑는 표본의 수가 클 수록 전체 평균에 근사하겓 돼
+
+---
+---
+
+이러한 변동성 때문에 실험을 할때 값이 달라질거야.
+
+그래서 python에서 seeding을 통해 변동성을 고정할수 있어.
+
+```python
+np.random.seed(42)
+
+randseed = np.random.RandomState(42)
+
+randseed1.randn(5)
+randseed1.randn(5)
+#  이 둘 값은 달라, 근데 이 코드를 반복하면 이전과 같은 값을 얻을 수 있어.
+# 이렇게 재현은 가능하지만 랜덤 값이 달라지게 하는 상황이 있을 수있어서. 더 많이 쓰여
+
+torch.manual_seed(42)
+```
+
+---
+---
+
+그럼 변동성이 있는지 없는지는 어떻게 판단할까?
+
+그 방법으로 t-test를 할 수 있어
+
+두 샘플링 된 데이터가 '평균적'으로 비슷한가를 판단하는 방법으로 t-test를 사용해.
+
+t-value = (Difference of means) / (standard deviations)
+
+t-value가 크면 두 표본의 평균차가 큰 것이고, 작으면 표본의 평균차가 작은 거야.
+
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+import scipy.stats as stats
+
+stats.ttest_ind(data2,data1)
+```
+
++++ 그 일이 실제 일어날 확률을 나타낸 지표 p-value
+
+[https://justdoitman.tistory.com/51]
