@@ -245,3 +245,27 @@ torch.manual_seed(42)
 
 ---
 ---
+
+그럼 변동성이 있는지 없는지는 어떻게 판단할까?
+
+그 방법으로 t-test를 할 수 있어
+
+두 샘플링 된 데이터가 '평균적'으로 비슷한가를 판단하는 방법으로 t-test를 사용해.
+
+t-value = (Difference of means) / (standard deviations)
+
+t-value가 크면 두 표본의 평균차가 큰 것이고, 작으면 표본의 평균차가 작은 거야.
+
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+import scipy.stats as stats
+
+stats.ttest_ind(data2,data1)
+```
+
++++ 그 일이 실제 일어날 확률을 나타낸 지표 p-value
+
+[https://justdoitman.tistory.com/51]
