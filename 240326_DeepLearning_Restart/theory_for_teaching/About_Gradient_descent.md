@@ -47,4 +47,23 @@ learning rate에 대해서, 초기에 크다가 학습이 진행될 수록 작�
 
 이처럼 하기 위해 optimizer 같은 것을 써.
 
+---
+
+gradient problems, vanishing gradient와 exploding gradient가 있어.
+
+gradient = 0 일 때 기울기 소실이 일어나고
+
+gradient가 너무 커서 최소값을 넘어 다음 극값을 가지게 될 때, exploding gradient가 일어나
+
+이 경우 solution값이 틀린 값을 가지겠지
+
+어떻게 하면 이런 문제를 줄일 수 있을까?
+
+1. 은닉층의 수를 줄인다.
+2. relu같은 활성화 함수를 쓴다.
+3. 가중치를 정규화한다.
+4. autoencoder 로 모델을 미리 학습시킨다.
+5. 배치정규화나 드랍아웃, 가중치 소실 등 가중치를 소실시키는 regularization 기술을 사용한다.
+6. resnet 이라는 경사 문제가 없도록 설계된 구조를 사용할 수 있다.
+
  
