@@ -5,7 +5,11 @@ import matplotlib.pyplot as plt
 
 N = 30
 x = torch.randn(N,1)
-y = x + torch.randn(N,1)/2
+y = x + torch.randn(N,1) /2
+
+# and plot
+plt.plot(x,y,'s')
+plt.show()
 
 # build basic ann model
 ANNreg = nn.Sequential(
@@ -28,7 +32,7 @@ optimizer = torch.optim.SGD(ANNreg.parameters(),
 
 # start train
 
-numepochs = 500
+numepochs = 100
 losses = torch.zeros(numepochs)
 
 for epoch in range(numepochs):
@@ -82,3 +86,5 @@ plt.show()
 lr 는 가중치를 얼마나 이동시킬까의 문제야.
     lr이 너무 크다면? 아무리해도 loss가 줄지 않겠지 .
 '''
+
+# 코랩이랑 코드가 같아도 결과가 다름
