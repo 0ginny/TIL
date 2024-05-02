@@ -52,3 +52,20 @@ J = 1/n * sum(L(y_pred_i,y_i)) = 1/n*sum(L(f(x,W)_i, y_i))
 - 그런데 여기서 너무 많은 샘플의 평균을 구하게 될 경우 민감도가 감소할 수 있어. 특히 표본 변동성이 클 경우
 - 그래서 가장 좋은 방법은 샘플링 단위가 아니라 batch 단위로 비용함수를 구하는 거야. (미니배치경사하강법)
 
+---
+
+### back propergation
+
+일단 이제부터 하나의 퍼셉트론을 unit(node) 으로 표시할거야.
+
+그리고 이 노드들은 모두 독립적이야. 전체의 상황을 모르는 상태야.
+
+이 때, 역전파는 완전히 경사하강법과 동일하게 이루어져.
+
+그런데 우리가 바꿀 수 있는건 w 뿐이라.
+
+w <- w - lr*Loss_deriv (vanila gradient descent)
+
+Loss_deriv = deriv(L(non_linear(xTw,y))
+
+이때 Loss는 Cost로 변경되어 쓸 수 있어. 
