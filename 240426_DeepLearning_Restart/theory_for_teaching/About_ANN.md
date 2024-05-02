@@ -88,3 +88,15 @@ Loss_deriv = deriv(L(non_linear(xTw,y))
 역전파 과정은 chain rule로 진행돼. 각각 노드끼리의 값을 함수로 연결해서, 하나의 함성 함수로 만들고
 
 그 함수를 각각 w_i로 편미분해서 값을 각 w_i값을 업데이트 하는 방식 
+
+### 학습률
+
+[학습률 비교 에니메이션 코드 github](https://github.com/pablocpz/Gradient-Descent-Visualizations)
+
+[1D 학습률 확인용 수정 코드](https://drive.google.com/file/d/1JlDZC_SSpwTR9Z8JnR0D07Q9Zh0xoHcl/view?usp=drive_link)
+
+학습률이 너무 높으면 아예 수렴하지 않을 수 있어. 계속 극소값 근처만 가고, 극소값 안으로 들어올 수 없으니.
+
+그런데 차원이 증가해도 그럴까? 무수히 많은 차원에서는 어떻게 될진 모르겠다...
+
+그래도 각각 수렴이 안될 거 같긴해.
