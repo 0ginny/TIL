@@ -59,6 +59,7 @@ J = 1/n * sum(L(y_pred_i,y_i)) = 1/n*sum(L(f(x,W)_i, y_i))
 사실 딥러닝은 최적의 값을 내는데에 적합하지는 않아.
 
 그리고 수학적으로 뛰어나지도 않지
+
 ---
 
 ### back propergation
@@ -79,3 +80,11 @@ w <- w - lr*Loss_deriv (vanila gradient descent)
 Loss_deriv = deriv(L(non_linear(xTw,y))
 
 이때 Loss는 Cost로 변경되어 쓸 수 있어. 
+
+#### 히든노드의 가중치는 어떻게 업데이트 되는가?
+
+[참고 블로그](https://amber-chaeeunk.tistory.com/18)
+
+역전파 과정은 chain rule로 진행돼. 각각 노드끼리의 값을 함수로 연결해서, 하나의 함성 함수로 만들고
+
+그 함수를 각각 w_i로 편미분해서 값을 각 w_i값을 업데이트 하는 방식 
