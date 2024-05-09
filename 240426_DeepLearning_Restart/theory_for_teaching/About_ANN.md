@@ -154,3 +154,14 @@ optimizer가 적합하게 바꿔주긴 하겠지만, learning rate가 매우 중
 
 #### lec 56 depth and breadth
 같은 노드라면 보통 wide 모델이 deep 모델보다 가중치 수가 더 많아.
+
+## model 생성 방법
+### Sequential
+매우 쉽고 직관적이야. 
+
+대신 만들 수 있는 모델이 한정적이지
+
+### class(nn.Module)
+Sequnetial 보다는 확실히 작성하기 불편해
+
+하지만 만들 수 있는 모델의 한계가 없어. 무궁무진하게 만들 수 있어.
