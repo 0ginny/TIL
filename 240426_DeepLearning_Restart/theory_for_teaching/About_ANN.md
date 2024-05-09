@@ -145,3 +145,9 @@ Loss_deriv = deriv(L(non_linear(xTw,y))
 
 lr, hidden node, hidden layer 등 여러가지 요소들이 각각 바뀔 때마다 정확도가 달라지므로 
 하이퍼 파라미터 튜닝도 매우 중요해.
+
+#### lec 55 hidden node, epoch, learning rate
+실험을 해봤을 때, hidden node, epoch 은 많을 수록 높긴 했어, 근데 시간의 문제가 있겠지?
+
+대신 learning rate가 적합하지 않은 경우는 아예 수렴하지 않는 경우도 있어. 
+optimizer가 적합하게 바꿔주긴 하겠지만, learning rate가 매우 중요해보여.
