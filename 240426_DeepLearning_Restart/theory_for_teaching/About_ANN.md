@@ -112,3 +112,28 @@ Loss_deriv = deriv(L(non_linear(xTw,y))
 그런데 차원이 증가해도 그럴까? 무수히 많은 차원에서는 어떻게 될진 모르겠다...
 
 그래도 각각 수렴이 안될 거 같긴해.
+
+## About DL Layers
+
+### Full connected layer
+
+모든 이전층 노드들이 각각 해당 층 노드에 전부 연결하는 층
+
+여기엔 가시화하지 않아도 bias가 껴있음을 인지하자.
+
+- nn.Linear()
+- keras.layers.Dense()
+
+## About activation function
+
+### sigmoid
+
+이진 분류할 때 사용
+
+- 0과 1로 구분지어줌.
+
+### softmax
+
+카테고리 분류할 때 사용
+
+- 전체 합이 1이 되도록 확률로 변환해줌
