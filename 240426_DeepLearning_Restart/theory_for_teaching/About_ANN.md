@@ -152,8 +152,16 @@ lr, hidden node, hidden layer 등 여러가지 요소들이 각각 바뀔 때마
 대신 learning rate가 적합하지 않은 경우는 아예 수렴하지 않는 경우도 있어. 
 optimizer가 적합하게 바꿔주긴 하겠지만, learning rate가 매우 중요해보여.
 
-#### lec 56 depth and breadth
+#### lec 56,57 depth and breadth
 같은 노드라면 보통 wide 모델이 deep 모델보다 가중치 수가 더 많아.
+
+##### lec 57 실험 결과
+깊이가 깊다고 정확도가 오르지 않아
+
+단순히 파라미터(weight?) 수가 많다고 정확도가 오르지도 않아.
+
+정확도에는 여러가지가 복합적으로 적용이돼. 
+예를 들어 학습률이나, 옵티마이저, 정규화 등 여러가지 사항들을 복합적으로 고려해야해.
 
 ## model 생성 방법
 ### Sequential
