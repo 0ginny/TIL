@@ -151,3 +151,6 @@ lr, hidden node, hidden layer 등 여러가지 요소들이 각각 바뀔 때마
 
 대신 learning rate가 적합하지 않은 경우는 아예 수렴하지 않는 경우도 있어. 
 optimizer가 적합하게 바꿔주긴 하겠지만, learning rate가 매우 중요해보여.
+
+#### lec 56 depth and breadth
+같은 노드라면 보통 wide 모델이 deep 모델보다 가중치 수가 더 많아.
