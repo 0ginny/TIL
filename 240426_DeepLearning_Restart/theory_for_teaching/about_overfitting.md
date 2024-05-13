@@ -69,7 +69,7 @@ K개의 학습검정셋을 만들어 cross validation을 하는 것
 사실 데이터가 적고 간단한 모델에서는 일반화와 같이 별로 좋지 않을 수 있어. 
 
 #### 일반적인 정규화 방식
-- dropout (Node regularization)
+- lec 71. dropout (Node regularization)
     - 학습 중 무작위로 노드를 제거하는 방식
     - epoch 마다 사용하지 않는 노드들이 바껴
     - 추가로 평가할 때는 dropout이 이루어 지지 않도록 해.
@@ -80,9 +80,18 @@ K개의 학습검정셋을 만들어 cross validation을 하는 것
       - 데이터가 줄어서 학습 속도가 빨라져
       - 테스트 정확도는 줄지만, 평가 정확도는 올라
     - 데이터의 수가 줄어드므로 데이터가 많은 경우에 유리하고, 그렇지 않을 경우 데이터를 늘리거나 학습량을 늘려야해
-- l1, l2 regularization (Loss regularization)
+- lec 74. L1, L2 regularization (Loss regularization)
     - 비용 함수를 계산할 때 수학적인 무언가를 추가하는 방식
-    - 가중치의 중ㅇ도가 너무 커지는 걸 방지하는 거지
+    - 가중치의 중요도가 너무 커지는 걸 방지하는 거지
+    - L1 (lasso) : J += lambda(가중치 벡터 노름)
+      - 특정 가중치를 0으로 만들어 중요한 가중치만 남기는 feature selection
+      - 인코딩 특징들의 중요도를 이해해야할 때, 즉, 딥러닝보단 일반적인 회귀문제에서 사용
+        - 학습정확도가 검증정확도보다 훨씬 높을 때 사용
+    - L2 ( ridge, weight decay) : J += lambda(가중치 벡터 노름 제곱 == wTw)
+      - 모든 무게를 줄이되 가중치가 클 수록 더 줄어들어
+    - lambda = alpha / 2m
+![L1_L2_table](./images/L1_L2_Regularization_table.jpg)
+      - [참조 블로그](https://seongyun-dev.tistory.com/52)
 - batch training, data augmentation (Data regularizatioin)
   - 데이터를 수정해서 더 큰 데이터 셋을 얻는 거야. (image generation 같은 거)
 - 어떤 방법이 최선인지는 경험적으로 알아봐야해. 경험적 논문을 보던지 개선해나가는 거지.
