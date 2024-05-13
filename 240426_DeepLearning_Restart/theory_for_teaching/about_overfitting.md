@@ -77,3 +77,9 @@ K개의 학습검정셋을 만들어 cross validation을 하는 것
 - batch training, data augmentation (Data regularizatioin)
   - 데이터를 수정해서 더 큰 데이터 셋을 얻는 거야. (image generation 같은 거)
 - 어떤 방법이 최선인지는 경험적으로 알아봐야해. 경험적 논문을 보던지 개선해나가는 거지.
+
+#### 토글링
+
+정규화를 적용하기 위해 학습모드와 평가모드를 바꿀 필요가 있어. 
+
+[토글링 문서](About%20toggling.md)
