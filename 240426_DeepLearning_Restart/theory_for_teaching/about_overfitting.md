@@ -51,4 +51,29 @@ K개의 학습검정셋을 만들어 cross validation을 하는 것
 
 ### Use regulariztion (L2, drop-out, data manipulations, early stoppping)
 
+정규화는 모델이 학습이 아닌 암기를 방지하는 활동이야. 모델을 좀 부드럽게? 선형적인걸 다차항으로 만드는 것처럼 하는 방식
 
+모델의 일반화를 도울 수 있지.
+
+
+학습 밀도를 줄이기도 하고, 분포를 마꾸기도 해.
+
+그래서 학습시간이 바껴.
+
+학습 정확도는 낮아질 수 있지만, 테스트 정확도는 높아질거야.
+
+다층 구조 모델이나, 큰 모델에서 훨씬 효과적이야.
+
+당연히 충분한 데이터가 있을 때 더 잘 적용되고.
+
+사실 데이터가 적고 간단한 모델에서는 일반화와 같이 별로 좋지 않을 수 있어. 
+
+#### 일반적인 정규화 방식
+- dropout (Node regularization)
+    - 학습 중 무작위로 노드를 제거하는 방식
+- l1, l2 regularization (Loss regularization)
+    - 비용 함수를 계산할 때 수학적인 무언가를 추가하는 방식
+    - 가중치의 중ㅇ도가 너무 커지는 걸 방지하는 거지
+- batch training, data augmentation (Data regularizatioin)
+  - 데이터를 수정해서 더 큰 데이터 셋을 얻는 거야. (image generation 같은 거)
+- 어떤 방법이 최선인지는 경험적으로 알아봐야해. 경험적 논문을 보던지 개선해나가는 거지.
