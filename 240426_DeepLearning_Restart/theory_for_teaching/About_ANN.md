@@ -36,6 +36,7 @@ y = sigma(xTw + w0)
 
 보통 크게 두 종류의 손실함수가 있어.
 
+
 #### Mean-squared error (MSE)
 
 연속데이터를 사용하면서 출력도 연속된 값일때.
@@ -45,8 +46,22 @@ L = 1/2 * (y_pred - y)^2
 #### Cross-entropy (logistic error)
 
 범주형 데이터를 써서 확률로 나타내는 함수
+
 L = -(ylog(y_pred) + (1-y)log(1-y_pred))
 
+pytorch 내에선 softmax가 같이 구현이 되어있음.
+
+#### 추가적인 손실함수
+
+![loss funs](./images/basic_lossfuns.png)
+
+- KLDivLoss
+  - 서로 다른 두 분포의 차이(dissimilarity)를 측정할 때 사용
+  - P와 Q의 crossentropy가 같으면 최소값을 가짐
+
+- Triplet Margin Loss
+
+![triplet margin loss](./images/triplet_margin_loss.png)
 
 ### Cost function
 
