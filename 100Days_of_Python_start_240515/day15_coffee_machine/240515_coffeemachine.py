@@ -44,7 +44,6 @@ coins = {
     "pennies" : .01
 }
 
-# TODO : 1. Prompt user by asking “What would you like? (espresso/latte/cappuccino):”
 
 def asking():
 
@@ -52,15 +51,11 @@ def asking():
 
     return menu
 
-
-# TODO : 3. Print report
-
 def print_report():
     for src_key in resources.keys():
         print(f'{src_key}: {resources[src_key]}{units[src_key]}')
     print(f'Money: ${profit}\n')
 
-# TODO : 4. Check resources sufficient?
 def is_sufficient_resources(drink):
     # 메뉴에서 필요한 재료를 추출
     for ingredient in MENU[drink]["ingredients"].keys():
@@ -69,7 +64,6 @@ def is_sufficient_resources(drink):
             return False
     return True
 
-# TODO : 5. Process coins
 
 def Incert_coins():
     total_cost = 0
@@ -80,7 +74,6 @@ def Incert_coins():
     return total_cost
 
 
-# TODO : 6. Check transaction successful?
 def is_suficient_cost(drink):
     input_cost = Incert_coins()
     require_cost = MENU[drink]["cost"]
@@ -94,8 +87,6 @@ def is_suficient_cost(drink):
     print(f'Here is your {drink} ☕️ Enjoy!\n')
     return True
 
-# TODO : 7. Make Coffee
-
 def process_resources(drink):
     global profit
 
@@ -103,7 +94,6 @@ def process_resources(drink):
         resources[ingredient] -= MENU[drink]["ingredients"][ingredient]
     profit += MENU[drink]["cost"]
 
-# TODO : 2. Turn off the Coffee Machine by entering “off” to the prompt.
 
 if __name__ == "__main__" :
     print(MENU.keys())
