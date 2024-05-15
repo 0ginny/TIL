@@ -12,6 +12,17 @@
   - Zi = (xi - x_mean) / x_standard
   - 데이터의 숫자는 변하지만, 데이터의 통계적 형상은 변하지 않아.
   - 일반적인 분포 데이터에서 사용
+
+```python
+import scipy.stats as stats
+import pandas as pd
+iris = pd.read_csv('https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv')
+
+cols2zscore = iris.keys()
+cols2zscore = cols2zscore.drop('species')
+iris[cols2zscore] = iris[cols2zscore].apply(stats.zscore)
+```
+
 - min-max-scaling
   - 큰 값이 1, 최소값이 0 으로
   - x~ = (x- x_min) / (x_max - x_min)
