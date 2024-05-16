@@ -29,3 +29,14 @@ iris[cols2zscore] = iris[cols2zscore].apply(stats.zscore)
   - 만약 a 에서 b 범위로 스케일하고 싶으면
     - x* = a + x~(b-a)
   - 이미지 처리나, uniform 데이터에서 주로 사용돼
+
+- batch normalization (layer normalization)
+
+  - 배치마다 평균과 분산으로 분포를 정규화 하는 과정
+  - 장점
+    - 스케일을 맞출 수 있다
+    - 오버피팅을 막을 수 있다
+    - 활성화 함수에 맞춰서 분포를 변화시킬 수 있다.
+  - [참고](https://heytech.tistory.com/438)
+  - ![batch_nomalize](./images/batch_normalization.jpg)
+
