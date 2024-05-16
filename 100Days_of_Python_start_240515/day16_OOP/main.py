@@ -69,6 +69,6 @@ while 1:
         # pay money
         if moneyMachine.make_payment(drink.cost) :
             coffeemaker.make_coffee(drink)
-    print()
+        print()
 
 
