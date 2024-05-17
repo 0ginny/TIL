@@ -2,9 +2,9 @@ import turtle as T
 
 pointer = T.Turtle()
 screen = T.Screen()
-pointer.begin_poly()
-pointer.fd(100)
-pointer.end_poly()
-pointer.fd(100)
-
+for _ in range(15):
+    pointer.fd(10)
+    pointer.up()
+    pointer.fd(10)
+    pointer.down()
 screen.exitonclick()
