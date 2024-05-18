@@ -8,10 +8,18 @@ color_names = ['yellow', "gold", 'orange', 'red', 'maroon', 'violet', 'magenta',
 screen = Screen()
 screen.setup(500, 500)
 #
-bet = turtle.textinput("Make your bet", "who will win the race? Enter a color")
 
+num_turtles = 11
 
-start_x = -230
+prompt = "who will win the race? Enter a color"
+
+while 1 :
+    bet = turtle.textinput("Make your bet", prompt)
+    prompt = "Not in turtle colors. Betting another color"
+    if bet in color_names[:num_turtles]: #
+        break
+
+start_x = -240
 start_y = -200
 
 turtles = []
