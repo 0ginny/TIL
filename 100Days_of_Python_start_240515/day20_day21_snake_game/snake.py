@@ -6,12 +6,17 @@ unit_size = 20
 start_x = 0
 start_y = 0
 
+up = 90
+down = -90
+right = 0
+left = 180
+
 
 class Snake():
     def __init__(self):
         self.body = []
         self.create_snake()
-        self.head = 0
+        self.sethead(0)
 
     def create_snake(self):
         for idx in range(start_len):
@@ -34,13 +39,18 @@ class Snake():
 
     def sethead(self, angle):
         self.body[0].setheading(angle)
+        self.head = angle
 
     def up(self):
-        self.sethead(90)
+        if self.head != down:
+            self.sethead(up)
     def down(self):
-        self.sethead(-90)
+        if self.head != up:
+            self.sethead(down)
 
     def right(self):
-        self.sethead(0)
+        if self.head != left:
+            self.sethead(right)
     def left(self):
-        self.sethead(180)
+        if self.head != right:
+            self.sethead(left)
