@@ -17,8 +17,16 @@ if __name__ == '__main__':
 
     snake = Snake()
 
+    screen.listen()
+
+    screen.onkey(fun = snake.up , key= 'Up')
+    screen.onkey(fun = snake.down , key= 'Down')
+    screen.onkey(fun = snake.right , key= 'Right')
+    screen.onkey(fun = snake.left , key= 'Left')
+
+
     while go_on:
         screen.update()
         time.sleep(0.3)
-        snake.forward()
+        snake.move()
     screen.exitonclick()
