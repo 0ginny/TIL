@@ -26,14 +26,13 @@ def animation_delay(delay):
 
 
 def snake_move():
-    for unit in snake:
-        unit.fd(20)
+    screen.update()
+    time.sleep(0.3)
 
     # 이전 unit 방향 가져오기
-    for idx in range(1,len(snake)):
-        snake[-idx].setheading(snake[-idx - 1].heading())
-    time.sleep(0.3)
-    screen.update()
+    for idx in range(1, len(snake)):
+        snake[-idx].goto(snake[-idx - 1].pos())
+
 
 def turn_left():
     snake[0].setheading(snake[0].heading + 90)
@@ -41,6 +40,7 @@ def turn_left():
 
 def turn_right():
     snake[0].setheading(snake[0].heading - 90)
+
 
 # main code
 if __name__ == '__main__':
@@ -56,12 +56,13 @@ if __name__ == '__main__':
 
     animation_delay(0)
     # while go_on :
-    for _ in range(10):
+
+    screen.listen()
+
+
+    while go_on:
         snake_move()
-
-
-
-    for _ in range(10):
-        snake_move()
+        snake[0].left(90)
+        snake[0].fd(20)
 
     screen.exitonclick()
