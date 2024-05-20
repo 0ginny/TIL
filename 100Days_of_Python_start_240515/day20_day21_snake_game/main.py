@@ -7,9 +7,11 @@ from scoreboard import ScoreBoard
 go_on = True
 wall_max = 280
 
+
 def quit_game():
     global go_on
     go_on = False
+
 
 # main code
 if __name__ == '__main__':
@@ -30,7 +32,7 @@ if __name__ == '__main__':
     screen.onkey(fun=snake.right, key='Right')
     screen.onkey(fun=snake.left, key='Left')
 
-    screen.onkey(fun=quit_game , key = 'q')
+    screen.onkey(fun=quit_game, key='q')
 
     while go_on:
         screen.update()
@@ -45,14 +47,11 @@ if __name__ == '__main__':
 
         # 벽에 닿았는지 감지
         if snake.head.xcor() > wall_max or snake.head.xcor() < -wall_max or snake.head.ycor() > wall_max or snake.head.ycor() < -wall_max:
-            go_on = False
-            score.gameover()
-
+            score.new_score()
+            snake.restart()
         # 몸에 닿았는지 감지
         for unit in snake.body[1:]:
-            if snake.head.distance(unit) < 10 :
-                # go_on = False
-                # score.gameover()
+            if snake.head.distance(unit) < 10:
                 score.new_score()
                 snake.restart()
     screen.exitonclick()

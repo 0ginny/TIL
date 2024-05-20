@@ -14,7 +14,9 @@ left = 180
 
 class Snake():
     def __init__(self):
-        self.restart()
+        self.body = []
+        self.create_snake()
+        self.head = self.body[0]
 
     def create_snake(self):
         for idx in range(start_len):
@@ -22,7 +24,9 @@ class Snake():
             self.add_unit(pos)
 
     def restart(self):
-        self.body = []
+        for unit in self.body:
+            unit.hideturtle()
+        self.body.clear()
         self.create_snake()
         self.head = self.body[0]
 
