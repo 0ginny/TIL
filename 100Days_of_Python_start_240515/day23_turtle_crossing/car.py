@@ -11,7 +11,7 @@ HEADING = 180
 STRETCH_LEN = 2
 STRETCH_WID = 1
 
-X_MIN_RANGE = 0 #250
+X_MIN_RANGE = -250
 X_MAX_RANGE = 250
 Y_MIN_RANGE = -200
 Y_MAX_RANGE = 200
@@ -44,4 +44,7 @@ class Cars():
     def move_cars(self):
         for car in self.cars:
             car.fd(MOVE_DISTATNCE)
+            # car position reset
+            if car.xcor() <= X_MIN_RANGE:
+                car.goto(X_MAX_RANGE,car.ycor())
 
