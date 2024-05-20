@@ -3,8 +3,9 @@ import time
 from snake import Snake
 from food import Food
 from scoreboard import ScoreBoard
-go_on = True
 
+go_on = True
+wall_max = 280
 
 # main code
 if __name__ == '__main__':
@@ -20,11 +21,10 @@ if __name__ == '__main__':
     food = Food()
     screen.listen()
     score = ScoreBoard()
-    screen.onkey(fun = snake.up , key= 'Up')
-    screen.onkey(fun = snake.down , key= 'Down')
-    screen.onkey(fun = snake.right , key= 'Right')
-    screen.onkey(fun = snake.left , key= 'Left')
-
+    screen.onkey(fun=snake.up, key='Up')
+    screen.onkey(fun=snake.down, key='Down')
+    screen.onkey(fun=snake.right, key='Right')
+    screen.onkey(fun=snake.left, key='Left')
 
     while go_on:
         screen.update()
@@ -35,5 +35,9 @@ if __name__ == '__main__':
             print('nam nam')
             score.upscore()
             food.refresh()
+
+        # 벽에 닿았는지 감지
+        if snake.head.xcor() > wall_max or snake.head.xcor() < -wall_max or snake.head.ycor() > wall_max or snake.head.ycor() < -wall_max:
+            go_on = False
 
     screen.exitonclick()
