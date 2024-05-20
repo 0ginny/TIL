@@ -7,7 +7,7 @@ CAR_SPEED = 0.1
 SPEED_PROP = .8
 MOVE_DISTATNCE = 10
 MOVE_INCREASE = 1
-NUM_CARS = 10
+NUM_CARS = 20
 HEADING = 180
 
 STRETCH_LEN = 2
@@ -17,6 +17,9 @@ X_MIN_RANGE = -250
 X_MAX_RANGE = 250
 Y_MIN_RANGE = -200
 Y_MAX_RANGE = 200
+
+ACCIDENT_DISTANCE = 30
+CAR_WID = 12
 
 # class Car(t.Turtle):
 #     def __init__(self):
@@ -55,3 +58,10 @@ class Cars():
     def upspeed(self):
         self.car_speed *= SPEED_PROP
         self.move_distance += 1
+
+    def car_accident(self,obj):
+        for car in self.cars:
+            if car.distance(obj) <= ACCIDENT_DISTANCE:
+                if car.ycor() - CAR_WID <= obj.ycor() <= car.ycor() + CAR_WID:
+                    return True
+        return False

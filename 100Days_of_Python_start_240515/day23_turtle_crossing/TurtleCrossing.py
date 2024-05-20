@@ -40,4 +40,10 @@ if __name__ == '__main__':
             cars.upspeed()
             scoreboard.upsocre()
 
+        # game over
+        if cars.car_accident(timmy):
+            print('game over!')
+            scoreboard.game_over()
+            GAME_ON = False
+
     screen.exitonclick()
