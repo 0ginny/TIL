@@ -7,7 +7,7 @@ start_x = 0
 start_y = 0
 
 up = 90
-down = -90
+down = 270
 right = 0
 left = 180
 

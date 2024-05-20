@@ -2,7 +2,7 @@ from turtle import Screen
 import time
 from snake import Snake
 from food import Food
-
+from scoreboard import ScoreBoard
 go_on = True
 
 
@@ -19,7 +19,7 @@ if __name__ == '__main__':
     snake = Snake()
     food = Food()
     screen.listen()
-
+    score = ScoreBoard()
     screen.onkey(fun = snake.up , key= 'Up')
     screen.onkey(fun = snake.down , key= 'Down')
     screen.onkey(fun = snake.right , key= 'Right')
@@ -33,6 +33,7 @@ if __name__ == '__main__':
 
         if snake.head.distance(food) <= 15:
             print('nam nam')
+            score.upscore()
             food.refresh()
 
     screen.exitonclick()
