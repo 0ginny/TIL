@@ -9,6 +9,11 @@ SCREEN_HEIGHT = 600
 WALL_X = 380
 WALL_Y = 280
 
+DISTANCE_MAX = 58
+DISTNACE_MIN = 20
+
+TIME_DELAY = 0.02
+
 # main code
 if __name__ == '__main__' :
     screen = t.Screen()
@@ -32,14 +37,14 @@ if __name__ == '__main__' :
 
     while 1:
         screen.update()
-        time.sleep(0.05)
+        time.sleep(TIME_DELAY)
 
 
         # if paddle detact ball
-        if player1.distance(ball) <= 55 and ball.xcor() <= player1.xcor()+20:
+        if player1.distance(ball) <= DISTANCE_MAX and ball.xcor() <= player1.xcor()+DISTNACE_MIN:
             ball.switch_angle_vertical()
 
-        if player2.distance(ball) <= 55 and ball.xcor() >= player2.xcor()-20:
+        if player2.distance(ball) <= DISTANCE_MAX and ball.xcor() >= player2.xcor()-DISTNACE_MIN:
             ball.switch_angle_vertical()
 
         if not -WALL_Y <= ball.ycor() <= WALL_Y :

@@ -6,7 +6,7 @@ Y_MIN = -290
 X_MAX = 390
 X_MIN = -390
 
-MOVE_DISTANCE = 20
+MOVE_DISTANCE = 10
 
 
 class Ball(t.Turtle):
@@ -33,4 +33,4 @@ class Ball(t.Turtle):
 
     def restart(self):
         self.goto(0,0)
-        self.setheading(rd.randint(1, 360))
+        self.setheading(rd.choice([rd.randint(-75, 75), rd.randint(115, 255)]))
