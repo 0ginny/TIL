@@ -24,3 +24,7 @@ class ScoreBoard(t.Turtle):
     def upscore(self):
         self.score += 1
         self.rewrite()
+
+    def gameover(self):
+        self.goto(0,0)
+        self.write("Game Over!", align=ALIGNMENT, font=FONT)

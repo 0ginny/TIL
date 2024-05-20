@@ -39,5 +39,6 @@ if __name__ == '__main__':
         # 벽에 닿았는지 감지
         if snake.head.xcor() > wall_max or snake.head.xcor() < -wall_max or snake.head.ycor() > wall_max or snake.head.ycor() < -wall_max:
             go_on = False
+            score.gameover()
 
     screen.exitonclick()
