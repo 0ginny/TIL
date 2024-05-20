@@ -6,6 +6,8 @@ import time
 SCREEN_WIDTH = 500
 SCREEN_HEIGHT = 500
 
+WINING_POS = 250
+START_POS = -230
 # main code
 if __name__ == '__main__':
     # create basic screen
@@ -25,5 +27,10 @@ if __name__ == '__main__':
         screen.update()
         time.sleep(cars.car_speed)
         cars.move_cars()
+
+        # set clear
+        if timmy.ycor() > WINING_POS:
+            timmy.goto(0, START_POS)
+            cars.upspeed()
 
     screen.exitonclick()

@@ -7,11 +7,11 @@
 - ~~기본 화면 구현~~
 - ~~timmy 클래스 생성~~
 - ~~timmy control~~
-- car 클래스 생성
-- car 램덤 움직임
-- clear 구현
-  - timmy 위치 초기화
-  - car 속도 증가
+- ~~car 클래스 생성~~
+- ~~car 램덤 움직임~~
+- ~~clear 구현~~
+  - ~~timmy 위치 초기화~~
+  - ~~car 속도 증가~~
 - scoreboard 구현
 - game over 구현
 

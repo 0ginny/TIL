@@ -4,7 +4,9 @@ import random as rd
 CAR_SHAPE = 'square'
 COLORS = ['red','blue','yellow','green','purple','orange','navy','gray']
 CAR_SPEED = 0.1
+SPEED_PROP = .8
 MOVE_DISTATNCE = 10
+MOVE_INCREASE = 1
 NUM_CARS = 10
 HEADING = 180
 
@@ -28,6 +30,7 @@ class Cars():
         for _ in range(NUM_CARS):
             self.create_car()
         self.car_speed = CAR_SPEED
+        self.move_distance = MOVE_DISTATNCE
 
     def create_car(self):
         car = t.Turtle()
@@ -43,8 +46,12 @@ class Cars():
 
     def move_cars(self):
         for car in self.cars:
-            car.fd(MOVE_DISTATNCE)
+            car.fd(self.move_distance )
             # car position reset
             if car.xcor() <= X_MIN_RANGE:
                 car.goto(X_MAX_RANGE,car.ycor())
 
+
+    def upspeed(self):
+        self.car_speed *= SPEED_PROP
+        self.move_distance += 1
