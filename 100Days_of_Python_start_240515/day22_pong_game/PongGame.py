@@ -45,6 +45,8 @@ if __name__ == '__main__' :
         if not -WALL_Y <= ball.ycor() <= WALL_Y :
             ball.switch_angle_horizon()
 
+        if not -WALL_X <= ball.xcor() <= WALL_X :
+            ball.restart()
 
         ball.move()
 

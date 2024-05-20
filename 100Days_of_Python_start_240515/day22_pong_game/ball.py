@@ -16,7 +16,7 @@ class Ball(t.Turtle):
         self.color('white')
         self.shape('circle')
         self.penup()
-        self.setheading(rd.randint(1, 360))
+        self.restart()
 
     def move(self):
         self.fd(MOVE_DISTANCE)
@@ -30,3 +30,7 @@ class Ball(t.Turtle):
         angle = self.heading()
         new_angle = 360 - angle
         self.setheading(new_angle)
+
+    def restart(self):
+        self.goto(0,0)
+        self.setheading(rd.randint(1, 360))
