@@ -14,8 +14,18 @@
 - SGD가 변동성이 너무 커서, N개의 샘플의 손실 평균으로 가중치를 업데이트하는 방식
 - 다만 특징 샘플이 서로 비슷한 경우, SGD가 훨씬 빠르고 효과적이긴 해.
 
-### Momentum
+### Momentum (SGD-Momentum)
 - 가중치 평균화로 부드럽게 만드는 방식
 - 각 가중치는 이전 데이터와 해당 데이터의 가중치가 결합된 값
 - ![momentum](./images/momentum_opt.jpg)
 - ![geometric](./images/momentum_geometric.jpg)
+
+### RMSprop
+- root-mean-square propagation
+- rms는 표준편차와 구조가 매우 비슷해.
+- ![rms](./images/RMSprop.jpg)
+- 움직이는 정도(step size)가 기울기의 크기의 history에 따라 달라져
+  - 큰 기울기 -> 작은 움직임
+  - 작은 기울기 -> 큰 움직임
+- gradient에 움직인 각 방향의 편미분값이 포괄적으로 계산되고 있어서, 각 가중치마다 학습률을 바꿔줘.
+- 초기 학습률의 영향이 매우 줄어들고, 자동적으로 학습률을 보간해줘. 
