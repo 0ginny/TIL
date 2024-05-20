@@ -1,5 +1,6 @@
 from turtle import Screen
 from timmy import Timmy
+from car import Cars
 import time
 
 SCREEN_WIDTH = 500
