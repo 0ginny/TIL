@@ -17,4 +17,9 @@ class Food(Turtle):
         self.shapesize(stretch_len= stretch, stretch_wid= stretch)
         self.color('blue')
         self.speed('fastest')
+        self.penup()
+        self.refresh()
+
+    def refresh(self):
         self.goto(rd.randint(min_w,max_w), rd.randint(min_h,max_h))
+

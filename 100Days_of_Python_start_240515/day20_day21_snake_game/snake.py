@@ -16,7 +16,7 @@ class Snake():
     def __init__(self):
         self.body = []
         self.create_snake()
-        self.sethead(0)
+        self.head = self.body[0]
 
     def create_snake(self):
         for idx in range(start_len):
@@ -35,22 +35,22 @@ class Snake():
     def move(self):
         # 앞으로 전진
         self.follow()
-        self.body[0].fd(move_distance)
+        self.head.fd(move_distance)
 
     def sethead(self, angle):
-        self.body[0].setheading(angle)
-        self.head = angle
+        self.head.setheading(angle)
+
 
     def up(self):
-        if self.head != down:
+        if self.head.heading() != down:
             self.sethead(up)
     def down(self):
-        if self.head != up:
+        if self.head.heading() != up:
             self.sethead(down)
 
     def right(self):
-        if self.head != left:
+        if self.head.heading() != left:
             self.sethead(right)
     def left(self):
-        if self.head != right:
+        if self.head.heading() != right:
             self.sethead(left)

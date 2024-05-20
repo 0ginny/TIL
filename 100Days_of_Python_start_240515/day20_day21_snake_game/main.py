@@ -28,6 +28,11 @@ if __name__ == '__main__':
 
     while go_on:
         screen.update()
-        time.sleep(0.3)
+        time.sleep(0.1)
         snake.move()
+
+        if snake.head.distance(food) <= 15:
+            print('nam nam')
+            food.refresh()
+
     screen.exitonclick()
