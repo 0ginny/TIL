@@ -15,6 +15,10 @@ DISTNACE_MIN = 20
 
 TIME_DELAY = 0.02
 
+ENDING_SCORE = 3
+
+GAME_ON = True
+
 # main code
 if __name__ == '__main__':
     screen = t.Screen()
@@ -38,7 +42,7 @@ if __name__ == '__main__':
     screen.onkey(fun=player2.up, key='Up')
     screen.onkey(fun=player2.down, key='Down')
 
-    while 1:
+    while GAME_ON:
         screen.update()
         time.sleep(ball.ball_speed)
 
@@ -61,6 +65,11 @@ if __name__ == '__main__':
                 scoreboard.upscore(2)
 
             ball.reset_speed()
+
+        # end game
+        if scoreboard.p1score == ENDING_SCORE or scoreboard.p2score == ENDING_SCORE:
+            scoreboard.game_end()
+            GAME_ON = False
 
         ball.move()
 

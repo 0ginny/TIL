@@ -29,3 +29,11 @@ class ScoreBoard(t.Turtle):
     def rewrite(self):
         self.clear()
         self.write(f"{self.p1score} : {self.p2score}", align=ALIGN, font=FONT)
+
+    def game_end(self):
+        if self.p1score > self.p2score:
+            winner = 'Player 1'
+        else :
+            winner = 'Player 2'
+        self.goto(0,0)
+        self.write(f"{winner} is win!", align=ALIGN, font=FONT)
