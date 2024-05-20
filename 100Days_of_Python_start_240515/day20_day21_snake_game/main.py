@@ -1,6 +1,7 @@
-from turtle import Turtle, Screen
+from turtle import Screen
 import time
 from snake import Snake
+from food import Food
 
 go_on = True
 
@@ -16,7 +17,7 @@ if __name__ == '__main__':
     screen.tracer(0)  # 화면 전환시 update 해줘야 함.
 
     snake = Snake()
-
+    food = Food()
     screen.listen()
 
     screen.onkey(fun = snake.up , key= 'Up')
