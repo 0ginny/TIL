@@ -36,11 +36,11 @@ if __name__ == '__main__':
     scoreboard = ScoreBoard()
 
     screen.listen()
-    screen.onkey(fun=player1.up, key='w')
-    screen.onkey(fun=player1.down, key='s')
+    screen.onkeypress(fun=player1.up, key='w')
+    screen.onkeypress(fun=player1.down, key='s')
 
-    screen.onkey(fun=player2.up, key='Up')
-    screen.onkey(fun=player2.down, key='Down')
+    screen.onkeypress(fun=player2.up, key='Up')
+    screen.onkeypress(fun=player2.down, key='Down')
 
     while GAME_ON:
         screen.update()
