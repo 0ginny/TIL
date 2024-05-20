@@ -20,12 +20,19 @@ class Snake():
 
     def create_snake(self):
         for idx in range(start_len):
-            tim = Turtle('square')
-            tim.color('white')
-            # tim.speed(6) # normal speed || range 0.5 ~ 10
-            tim.penup()
-            tim.goto(start_x - unit_size * idx, start_y)
-            self.body.append(tim)
+            pos = (start_x - unit_size * idx, start_y)
+            self.add_unit(pos)
+
+    def add_unit(self, pos):
+        tim = Turtle('square')
+        tim.color('white')
+        # tim.speed(6) # normal speed || range 0.5 ~ 10
+        tim.penup()
+        tim.goto(pos)
+        self.body.append(tim)
+
+    def grow(self):
+        self.add_unit(self.body[-1].pos())
 
     def follow(self):
         # 이전 unit 따라가기
