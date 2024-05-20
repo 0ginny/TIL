@@ -40,7 +40,7 @@ if __name__ == '__main__':
 
     while 1:
         screen.update()
-        time.sleep(TIME_DELAY)
+        time.sleep(ball.ball_speed)
 
         # if paddle detact ball
         if player1.distance(ball) <= DISTANCE_MAX and ball.xcor() <= player1.xcor() + DISTNACE_MIN:
@@ -60,9 +60,8 @@ if __name__ == '__main__':
                 ball.restart(2)
                 scoreboard.upscore(2)
 
-            ball.move_distance = 10
+            ball.reset_speed()
 
         ball.move()
-        ball.move_distance += 0.01
 
     screen.exitonclick()
