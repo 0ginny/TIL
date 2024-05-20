@@ -56,6 +56,9 @@ if __name__ == '__main__' :
             else :
                 ball.restart(2)
 
+            ball.move_distance = 10
+
         ball.move()
+        ball.move_distance += 0.01
 
     screen.exitonclick()

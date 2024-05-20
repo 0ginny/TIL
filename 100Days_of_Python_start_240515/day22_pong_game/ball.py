@@ -17,9 +17,9 @@ class Ball(t.Turtle):
         self.shape('circle')
         self.penup()
         self.restart()
-
+        self.move_distance = MOVE_DISTANCE
     def move(self):
-        self.fd(MOVE_DISTANCE)
+        self.fd(self.move_distance)
 
     def switch_angle_vertical(self):
         angle = self.heading()
@@ -34,6 +34,6 @@ class Ball(t.Turtle):
     def restart(self, winner = rd.randint(1,2)):
         self.goto(0,0)
         if winner == 2:
-            self.setheading(rd.randint(-75,75))
+            self.setheading(rd.randint(-60,60))
         else :
-            self.setheading(rd.randint(115, 255))
+            self.setheading(rd.randint(120, 240))
