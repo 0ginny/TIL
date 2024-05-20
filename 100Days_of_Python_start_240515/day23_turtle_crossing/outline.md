@@ -4,7 +4,7 @@
 - ScoreBoard
 
 # 구현 단계
-- 기본 화면 구현
+~~- 기본 화면 구현~~
 - timmy 클래스 생성
 - timmy control
 - car 클래스 생성

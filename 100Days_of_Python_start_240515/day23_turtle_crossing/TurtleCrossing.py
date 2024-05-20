@@ -1,4 +1,5 @@
 from turtle import Screen
+from timmy import Timmy
 import time
 
 SCREEN_WIDTH = 500
@@ -10,6 +11,6 @@ if __name__ == '__main__':
     screen.title("Timmy Crossing Game")
     screen.setup(width=SCREEN_WIDTH, height= SCREEN_HEIGHT)
 
-
+    timmy = Timmy()
 
     screen.exitonclick()
