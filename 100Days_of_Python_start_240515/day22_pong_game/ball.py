@@ -31,6 +31,9 @@ class Ball(t.Turtle):
         new_angle = 360 - angle
         self.setheading(new_angle)
 
-    def restart(self):
+    def restart(self, winner = rd.randint(1,2)):
         self.goto(0,0)
-        self.setheading(rd.choice([rd.randint(-75, 75), rd.randint(115, 255)]))
+        if winner == 2:
+            self.setheading(rd.randint(-75,75))
+        else :
+            self.setheading(rd.randint(115, 255))
