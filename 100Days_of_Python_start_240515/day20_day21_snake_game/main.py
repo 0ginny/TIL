@@ -26,6 +26,8 @@ if __name__ == '__main__':
     screen.onkey(fun=snake.right, key='Right')
     screen.onkey(fun=snake.left, key='Left')
 
+
+
     while go_on:
         screen.update()
         time.sleep(0.1)
@@ -45,7 +47,7 @@ if __name__ == '__main__':
         # 몸에 닿았는지 감지
         for unit in snake.body[1:]:
             if snake.head.distance(unit) < 10 :
-                go_on = False
-                score.gameover()
-
+                # go_on = False
+                # score.gameover()
+                score.new_score()
     screen.exitonclick()
