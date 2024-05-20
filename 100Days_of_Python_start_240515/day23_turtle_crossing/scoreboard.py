@@ -18,3 +18,7 @@ class ScoreBoard(t.Turtle):
     def rewrite(self):
         self.clear()
         self.write(f"SCORE : {self.score}",align=ALIGN, font=FONT)
+
+    def upsocre(self):
+        self.score += 1
+        self.rewrite()

@@ -38,5 +38,6 @@ if __name__ == '__main__':
         if timmy.ycor() > WINING_POS:
             timmy.goto(0, START_POS)
             cars.upspeed()
+            scoreboard.upsocre()
 
     screen.exitonclick()

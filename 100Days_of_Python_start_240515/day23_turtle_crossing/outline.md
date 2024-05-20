@@ -12,7 +12,7 @@
 - ~~clear 구현~~
   - ~~timmy 위치 초기화~~
   - ~~car 속도 증가~~
-- scoreboard 구현
+- ~~scoreboard 구현~~
 - game over 구현
 
 추가적인 구현
