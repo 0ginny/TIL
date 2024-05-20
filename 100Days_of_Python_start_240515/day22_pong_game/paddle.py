@@ -6,6 +6,7 @@ STRETCH_HEIGHT = 5
 INIT_X = -380
 INIT_Y = 0
 
+MOVE_DISTANCE = 40
 
 class Paddle(t.Turtle):
     def __init__(self,player1 = True):
@@ -21,7 +22,7 @@ class Paddle(t.Turtle):
 
 
     def up(self):
-        self.goto(self.xcor(), self.ycor() + 20)
+        self.goto(self.xcor(), self.ycor() + MOVE_DISTANCE)
 
     def down(self):
-        self.goto(self.xcor(), self.ycor() - 20)
+        self.goto(self.xcor(), self.ycor() - MOVE_DISTANCE)

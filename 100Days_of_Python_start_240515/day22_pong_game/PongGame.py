@@ -26,6 +26,7 @@ if __name__ == '__main__' :
     screen.listen()
     screen.onkey(fun=player1.up, key='w')
     screen.onkey(fun=player1.down, key='s')
+
     screen.onkey(fun=player2.up, key='Up')
     screen.onkey(fun=player2.down, key='Down')
 
@@ -33,9 +34,13 @@ if __name__ == '__main__' :
         screen.update()
         time.sleep(0.05)
 
-        if not -WALL_X <= ball.xcor() <= WALL_X :
+
+        # if paddle detact ball
+        if player1.distance(ball) <= 55 and ball.xcor() <= player1.xcor()+20:
             ball.switch_angle_vertical()
 
+        if player2.distance(ball) <= 55 and ball.xcor() >= player2.xcor()-20:
+            ball.switch_angle_vertical()
 
         if not -WALL_Y <= ball.ycor() <= WALL_Y :
             ball.switch_angle_horizon()
