@@ -33,6 +33,7 @@ if __name__ == '__main__':
 
         if snake.head.distance(food) <= 15:
             print('nam nam')
+            snake.grow()
             score.upscore()
             food.refresh()
 
@@ -40,5 +41,11 @@ if __name__ == '__main__':
         if snake.head.xcor() > wall_max or snake.head.xcor() < -wall_max or snake.head.ycor() > wall_max or snake.head.ycor() < -wall_max:
             go_on = False
             score.gameover()
+
+        # 몸에 닿았는지 감지
+        for unit in snake.body[1:]:
+            if snake.head.distance(unit) < 10 :
+                go_on = False
+                score.gameover()
 
     screen.exitonclick()
