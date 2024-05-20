@@ -1,5 +1,6 @@
 import turtle as t
 from paddle import Paddle
+from ball import Ball
 import time
 
 SCREEN_WIDTH = 800
@@ -17,6 +18,8 @@ if __name__ == '__main__' :
 
     player1 = Paddle()
     player2 = Paddle(player1=False)
+
+    ball = Ball()
 
     screen.listen()
     screen.onkey(fun=player1.up, key='w')
