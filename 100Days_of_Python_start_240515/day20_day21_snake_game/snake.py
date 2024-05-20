@@ -14,14 +14,17 @@ left = 180
 
 class Snake():
     def __init__(self):
-        self.body = []
-        self.create_snake()
-        self.head = self.body[0]
+        self.restart()
 
     def create_snake(self):
         for idx in range(start_len):
             pos = (start_x - unit_size * idx, start_y)
             self.add_unit(pos)
+
+    def restart(self):
+        self.body = []
+        self.create_snake()
+        self.head = self.body[0]
 
     def add_unit(self, pos):
         tim = Turtle('square')
