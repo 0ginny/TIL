@@ -6,6 +6,8 @@ import time
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 
+WALL_X = 380
+WALL_Y = 280
 
 # main code
 if __name__ == '__main__' :
@@ -30,6 +32,15 @@ if __name__ == '__main__' :
     while 1:
         screen.update()
         time.sleep(0.05)
+
+        if not -WALL_X <= ball.xcor() <= WALL_X :
+            ball.switch_angle_vertical()
+
+
+        if not -WALL_Y <= ball.ycor() <= WALL_Y :
+            ball.switch_angle_horizon()
+
+
         ball.move()
 
     screen.exitonclick()
