@@ -7,6 +7,10 @@ from scoreboard import ScoreBoard
 go_on = True
 wall_max = 280
 
+def quit_game():
+    global go_on
+    go_on = False
+
 # main code
 if __name__ == '__main__':
     # create screen
@@ -26,7 +30,7 @@ if __name__ == '__main__':
     screen.onkey(fun=snake.right, key='Right')
     screen.onkey(fun=snake.left, key='Left')
 
-
+    screen.onkey(fun=quit_game , key = 'q')
 
     while go_on:
         screen.update()
@@ -50,4 +54,5 @@ if __name__ == '__main__':
                 # go_on = False
                 # score.gameover()
                 score.new_score()
+                snake.restart()
     screen.exitonclick()
