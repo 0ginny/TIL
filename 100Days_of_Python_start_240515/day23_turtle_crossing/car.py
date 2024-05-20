@@ -19,7 +19,7 @@ Y_MIN_RANGE = -200
 Y_MAX_RANGE = 200
 
 ACCIDENT_DISTANCE = 30
-CAR_WID = 12
+CAR_WID = 20
 
 # class Car(t.Turtle):
 #     def __init__(self):
