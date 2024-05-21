@@ -8,7 +8,7 @@ image_path = 'blank_states_img.gif'
 search_col = 'state'
 
 answers = []
-ending_score = 3
+ending_score = 50
 # data load
 def get_state_data(csv_path = '50_states.csv'):
     data = pd.read_csv(csv_path)
@@ -48,7 +48,13 @@ if __name__ == '__main__':
     while len(answers) < ending_score:
         # .title -> 첫 글자를 대문자로
         answer_state = screen.textinput(title=text_input_title, prompt=text_input_prompt).title()
+        if answer_state == 'Exit':
+            break
         answering(answer_state,data)
+
+    # 틀린 리스트 저장
+    states_to_learn = data['state'][~data['state'].isin(answers)]
+    states_to_learn.to_csv('states_to_learn.csv')
 
     # wait screen
     screen.mainloop()
