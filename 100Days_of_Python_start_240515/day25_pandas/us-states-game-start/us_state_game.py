@@ -46,7 +46,8 @@ if __name__ == '__main__':
     # main loop
     # input user answer
     while len(answers) < ending_score:
-        answer_state = screen.textinput(title=text_input_title, prompt=text_input_prompt)
+        # .title -> 첫 글자를 대문자로
+        answer_state = screen.textinput(title=text_input_title, prompt=text_input_prompt).title()
         answering(answer_state,data)
 
     # wait screen
