@@ -12,5 +12,5 @@
 # print(file.read())
 
 # open mode / r : read / w : write / a : add
-with open('my_file.txt', mode= 'a') as file:
-    file.write("\nNew Text")
+with open('new_file.txt', mode= 'w') as file:
+    file.write("New Text")
