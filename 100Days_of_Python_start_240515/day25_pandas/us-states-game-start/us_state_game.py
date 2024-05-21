@@ -8,10 +8,11 @@ image_path = 'blank_states_img.gif'
 search_col = 'state'
 
 answers = []
+ending_score = 3
 # data load
 def get_state_data(csv_path = '50_states.csv'):
     data = pd.read_csv(csv_path)
-    print(data[data[search_col] == 'Texas'].values[0])
+    print(data)
     return data
 # check the state is in 50 states
 def is_in_US_states(state, pd_data):
@@ -20,11 +21,14 @@ def is_in_US_states(state, pd_data):
     return False
 
 def answering(state,pd_data):
+    global text_input_title
     if is_in_US_states(state,pd_data):
         if state not in answers:
-            row = pd_data[pd_data[search_col] == state].values[0]
-            t.goto(row[1],row[2])
+            row = pd_data[pd_data[search_col] == state]
+            t.goto(int(row.x),int(row.y))
             t.write(state)
+            answers.append(state)
+            text_input_title = f'{len(answers)}/50 States Correct'
 
 if __name__ == '__main__':
     # set screen
@@ -41,8 +45,9 @@ if __name__ == '__main__':
 
     # main loop
     # input user answer
-    answer_state = screen.textinput(title=text_input_title, prompt=text_input_prompt)
-    answering(answer_state,data)
+    while len(answers) < ending_score:
+        answer_state = screen.textinput(title=text_input_title, prompt=text_input_prompt)
+        answering(answer_state,data)
 
     # wait screen
     screen.mainloop()
