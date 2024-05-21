@@ -6,7 +6,9 @@ score_y = 275
 ALIGNMENT = 'center'
 FONT = ('Arial', 15, 'bold')
 
-HIGHSCORE = 0
+# high score load
+with open('data.txt', mode = 'r') as data :
+    HIGHSCORE = int(data.read())
 
 # turtle 을 바로 상속할 수 없어. turtle은 module이야.
 # class 상속은 class를 해야하고.
@@ -32,6 +34,9 @@ class ScoreBoard(t.Turtle):
     def new_score(self):
         if self.score > self.highscore:
             self.highscore = self.score
+            # highscore save
+            with open('data.txt', mode = 'w') as data:
+                data.write(str(self.highscore))
         self.score = 0
         self.rewrite()
 
