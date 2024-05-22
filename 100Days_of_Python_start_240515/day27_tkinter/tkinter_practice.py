@@ -4,8 +4,12 @@ window = tk.Tk()
 window.title("My First GUI Program")
 window.minsize(width=500, height=300)
 
+
 my_label = tk.Label(text = 'I am a Label')
 my_label.grid(row = 0, column = 0) # 이게 있어야 window 안에 넣을 수 있어
+# padding
+my_label.config(padx= 10, pady = 10)
+
 
 def button_clicked():
     text = input_text.get()
