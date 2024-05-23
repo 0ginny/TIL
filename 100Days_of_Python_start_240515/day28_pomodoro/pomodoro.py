@@ -13,9 +13,14 @@ LONG_BREAK_MIN = 20
 reps = 0
 timer = None
 
+
 # ---------------------------- TIMER RESET ------------------------------- #
 def Timer_Reset():
     window.after_cancel(timer)
+    timer_text.config(text="Timer", fg=GREEN)
+    canvas.itemconfig(timer_time, text="00:00")
+    check_text.config(text="")
+
 
 # ---------------------------- TIMER MECHANISM ------------------------------- #
 def Timer_Start():
@@ -46,7 +51,7 @@ def Timer_Start():
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
 def count_down(count):
-    global  timer
+    global timer
 
     count_min = count // 60
     count_second = count % 60
