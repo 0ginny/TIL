@@ -6,50 +6,60 @@ RED = "#e7305b"
 GREEN = "#9bdeac"
 YELLOW = "#f7f5dd"
 FONT_NAME = "Courier"
+CHECK_MARK = "✔"
 WORK_MIN = 25
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
 reps = 0
+timer = None
 
 # ---------------------------- TIMER RESET ------------------------------- #
 def Timer_Reset():
-    pass
+    window.after_cancel(timer)
 
-
+# ---------------------------- TIMER MECHANISM ------------------------------- #
 def Timer_Start():
     global reps
     reps += 1
-
+    mark = ''
     # 1,3,5,7 Work
-    if reps % 2 :
+    if reps % 2:
+        if reps % 8 == 1:
+            check_text.config(text='')
         count_down(WORK_MIN * 60)
         timer_text.config(text='Work', fg=GREEN)
 
-    else : #2,4,6,8 Break
-        if reps % 8 == 0 : # Long Break
+    else:  # 2,4,6,8 Break
+        check_repeat = (reps // 2) % 4
+        for _ in range(check_repeat):
+            mark += CHECK_MARK
+
+        if reps % 8 == 0:  # Long Break
+            mark = CHECK_MARK * 4
             count_down(LONG_BREAK_MIN * 60)
-            timer_text.config(text='Break', fg= RED)
-        else :
+            timer_text.config(text='Break', fg=RED)
+        else:
             count_down(SHORT_BREAK_MIN * 60)
-            timer_text.config(text='Break', fg= PINK)
+            timer_text.config(text='Break', fg=PINK)
+        check_text.config(text=mark)
 
-
-# ---------------------------- TIMER MECHANISM ------------------------------- #
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
 def count_down(count):
+    global  timer
+
     count_min = count // 60
     count_second = count % 60
     # second 두자리로 만들기
-    if count_second < 10 :
+    if count_second < 10:
         count_second = f'0{count_second}'
-
 
     canvas.itemconfig(timer_time, text=f'{count_min}:{count_second}')
     if count > 0:
-        window.after(1000, count_down, count - 1)
+        timer = window.after(1000, count_down, count - 1)
     else:
         Timer_Start()
+
 
 # ---------------------------- UI SETUP ------------------------------- #
 
@@ -67,7 +77,7 @@ if __name__ == '__main__':
 
     # Text
     timer_text = Label(text="Timer", fg=GREEN, font=(FONT_NAME, 40, 'bold'), bg=YELLOW)
-    check_text = Label(text="✔", fg=GREEN, font=(FONT_NAME, 12, 'normal'), bg=YELLOW)
+    check_text = Label(fg=GREEN, font=(FONT_NAME, 12, 'normal'), bg=YELLOW)
 
     # buttons
     start_btn = Button(text="Start", font=(FONT_NAME, 12, 'normal'), highlightthickness=0, command=Timer_Start)
