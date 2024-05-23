@@ -24,16 +24,17 @@ def save_to_txt():
     email = email_ety.get()
     pw = pw_ety.get()
 
-    save_ok = messagebox.askokcancel(title=web,
-                                     message=f'These are the details entered:\nEmail : {email}\nPassword : {pw}\nIs it ok to save?')
-
-    if save_ok:
-        with open(SAVE_FILE_PATH, mode='a') as file:
-            file.write(f'{web} | {email} | {pw}\n')
-            web_ety.delete(0, END)
-            pw_ety.delete(0, END)
-            web_ety.focus()
-
+    if len(web) * len(pw) :
+        save_ok = messagebox.askokcancel(title=web,
+                                         message=f'These are the details entered:\nEmail : {email}\nPassword : {pw}\nIs it ok to save?')
+        if save_ok:
+            with open(SAVE_FILE_PATH, mode='a') as file:
+                file.write(f'{web} | {email} | {pw}\n')
+                web_ety.delete(0, END)
+                pw_ety.delete(0, END)
+                web_ety.focus()
+    else :
+        messagebox.showinfo(title="Oops",message="Please don't leave any fields empty!")
 
 # ---------------------------- UI SETUP ------------------------------- #
 
