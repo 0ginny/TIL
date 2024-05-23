@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import messagebox  # 이건 클래스가 아니라 module 이라 * 해도 따로 import 해야해.
+import random as rd
 
 LOGO_IMAGE_PATH = 'logo.png'
 
@@ -15,8 +16,23 @@ ENTER_BTN_WIDTH = 36
 
 SAVE_FILE_PATH = 'data.txt'
 
-
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
+letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
+           'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
+           'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
+
+def generate_pw():
+    letters_list = [rd.choice(letters) for _ in range(rd.randint(8, 10))]
+    nums_list = [rd.choice(numbers) for _ in range(rd.randint(2, 4))]
+    symbols_list = [rd.choice(symbols) for _ in range(rd.randint(2, 4))]
+
+    password_list = letters_list + nums_list + symbols_list
+    rd.shuffle(password_list)
+    gen_pw = ''.join(password_list)
+
+    pw_ety.insert(0,gen_pw)
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save_to_txt():
@@ -24,7 +40,7 @@ def save_to_txt():
     email = email_ety.get()
     pw = pw_ety.get()
 
-    if len(web) * len(pw) :
+    if len(web) * len(pw):
         save_ok = messagebox.askokcancel(title=web,
                                          message=f'These are the details entered:\nEmail : {email}\nPassword : {pw}\nIs it ok to save?')
         if save_ok:
@@ -33,8 +49,9 @@ def save_to_txt():
                 web_ety.delete(0, END)
                 pw_ety.delete(0, END)
                 web_ety.focus()
-    else :
-        messagebox.showinfo(title="Oops",message="Please don't leave any fields empty!")
+    else:
+        messagebox.showinfo(title="Oops", message="Please don't leave any fields empty!")
+
 
 # ---------------------------- UI SETUP ------------------------------- #
 
@@ -60,7 +77,7 @@ if __name__ == "__main__":
     pw_ety = Entry(width=PW_ENTRY_WIDTH, font=FONT)
 
     # Buttons
-    pw_btn = Button(text="Generate Password", width=PW_BTN_WIDTH, font=FONT)
+    pw_btn = Button(text="Generate Password", width=PW_BTN_WIDTH, font=FONT, command=generate_pw)
     enter_btn = Button(text="Add", width=ENTER_BTN_WIDTH, font=FONT, command=save_to_txt)
 
     # widget positioning
