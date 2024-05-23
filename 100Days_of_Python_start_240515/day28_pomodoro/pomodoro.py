@@ -12,20 +12,27 @@ SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
 reps = 0
 timer = None
-
+STRAT_ON = False
 
 # ---------------------------- TIMER RESET ------------------------------- #
 def Timer_Reset():
-    global reps
+    global reps, STRAT_ON
     window.after_cancel(timer)
     timer_text.config(text="Timer", fg=GREEN)
     canvas.itemconfig(timer_time, text="00:00")
     check_text.config(text="")
     reps = 0
+    STRAT_ON = False
 
 
 # ---------------------------- TIMER MECHANISM ------------------------------- #
 def Timer_Start():
+    global STRAT_ON
+    if not STRAT_ON:
+        STRAT_ON = True
+        Timer_ON()
+
+def Timer_ON():
     global reps
     reps += 1
     mark = ''
@@ -49,8 +56,6 @@ def Timer_Start():
             count_down(SHORT_BREAK_MIN * 60)
             timer_text.config(text='Break', fg=PINK)
         check_text.config(text=mark)
-
-
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
 def count_down(count):
     global timer
@@ -65,7 +70,7 @@ def count_down(count):
     if count > 0:
         timer = window.after(1000, count_down, count - 1)
     else:
-        Timer_Start()
+        Timer_ON()
 
 
 # ---------------------------- UI SETUP ------------------------------- #
