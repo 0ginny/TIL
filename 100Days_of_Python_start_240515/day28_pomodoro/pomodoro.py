@@ -9,7 +9,7 @@ FONT_NAME = "Courier"
 WORK_MIN = 25
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
-
+reps = 0
 
 # ---------------------------- TIMER RESET ------------------------------- #
 def Timer_Reset():
@@ -26,6 +26,10 @@ def Timer_Start():
 def count_down(count):
     count_min = count // 60
     count_second = count % 60
+    # second 두자리로 만들기
+    if count_second < 10 :
+        count_second = f'0{count_second}'
+
 
     canvas.itemconfig(timer_time, text=f'{count_min}:{count_second}')
     if count > 0:
@@ -62,3 +66,10 @@ if __name__ == '__main__':
     check_text.grid(row=4, column=2)
 
     window.mainloop()
+
+'''
+dynamic typing
+
+변수를 바꿨을 때 자동적으로 변수의 타입도 바꿔주는 것.
+
+'''
