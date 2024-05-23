@@ -16,10 +16,12 @@ timer = None
 
 # ---------------------------- TIMER RESET ------------------------------- #
 def Timer_Reset():
+    global reps
     window.after_cancel(timer)
     timer_text.config(text="Timer", fg=GREEN)
     canvas.itemconfig(timer_time, text="00:00")
     check_text.config(text="")
+    reps = 0
 
 
 # ---------------------------- TIMER MECHANISM ------------------------------- #
@@ -72,7 +74,7 @@ if __name__ == '__main__':
     # create window
     window = Tk()
     window.title("Pomodoro")
-    window.config(padx=100, pady=100, bg=YELLOW)
+    window.config(padx=100, pady=50, bg=YELLOW)
 
     # tomato canvas
     canvas = Canvas(width=200, height=224, bg=YELLOW, highlightthickness=0)
