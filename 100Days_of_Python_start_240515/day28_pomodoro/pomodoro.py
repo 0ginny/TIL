@@ -17,7 +17,21 @@ def Timer_Reset():
 
 
 def Timer_Start():
-    count_down(WORK_MIN * 60)
+    global reps
+    reps += 1
+
+    # 1,3,5,7 Work
+    if reps % 2 :
+        count_down(WORK_MIN * 60)
+        timer_text.config(text='Work', fg=GREEN)
+
+    else : #2,4,6,8 Break
+        if reps % 8 == 0 : # Long Break
+            count_down(LONG_BREAK_MIN * 60)
+            timer_text.config(text='Break', fg= RED)
+        else :
+            count_down(SHORT_BREAK_MIN * 60)
+            timer_text.config(text='Break', fg= PINK)
 
 
 # ---------------------------- TIMER MECHANISM ------------------------------- #
@@ -34,7 +48,8 @@ def count_down(count):
     canvas.itemconfig(timer_time, text=f'{count_min}:{count_second}')
     if count > 0:
         window.after(1000, count_down, count - 1)
-
+    else:
+        Timer_Start()
 
 # ---------------------------- UI SETUP ------------------------------- #
 
