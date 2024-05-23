@@ -17,12 +17,20 @@ def Timer_Reset():
 
 
 def Timer_Start():
-    pass
+    count_down(WORK_MIN * 60)
 
 
 # ---------------------------- TIMER MECHANISM ------------------------------- #
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
+def count_down(count):
+    count_min = count // 60
+    count_second = count % 60
+
+    canvas.itemconfig(timer_time, text=f'{count_min}:{count_second}')
+    if count > 0:
+        window.after(1000, count_down, count - 1)
+
 
 # ---------------------------- UI SETUP ------------------------------- #
 
@@ -36,15 +44,15 @@ if __name__ == '__main__':
     canvas = Canvas(width=200, height=224, bg=YELLOW, highlightthickness=0)
     tomato_img = PhotoImage(file='tomato.png')
     canvas.create_image(100, 112, image=tomato_img)
-    canvas.create_text(100, 130, text="00:00", fill="white", font=(FONT_NAME, 35, 'bold'))
+    timer_time = canvas.create_text(100, 130, text="00:00", fill="white", font=(FONT_NAME, 35, 'bold'))
 
     # Text
     timer_text = Label(text="Timer", fg=GREEN, font=(FONT_NAME, 40, 'bold'), bg=YELLOW)
     check_text = Label(text="✔", fg=GREEN, font=(FONT_NAME, 12, 'normal'), bg=YELLOW)
 
     # buttons
-    start_btn = Button(text="Start", font=(FONT_NAME, 12, 'normal'), highlightthickness=0)
-    reset_btn = Button(text="Reset", font=(FONT_NAME, 12, 'normal'), highlightthickness=0)
+    start_btn = Button(text="Start", font=(FONT_NAME, 12, 'normal'), highlightthickness=0, command=Timer_Start)
+    reset_btn = Button(text="Reset", font=(FONT_NAME, 12, 'normal'), highlightthickness=0, command=Timer_Reset)
 
     # widget placing
     timer_text.grid(row=1, column=2)
