@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import messagebox  # 이건 클래스가 아니라 module 이라 * 해도 따로 import 해야해.
 import random as rd
+import pyperclip
 
 LOGO_IMAGE_PATH = 'logo.png'
 
@@ -33,6 +34,7 @@ def generate_pw():
     gen_pw = ''.join(password_list)
 
     pw_ety.insert(0,gen_pw)
+    pyperclip.copy(gen_pw)
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save_to_txt():
