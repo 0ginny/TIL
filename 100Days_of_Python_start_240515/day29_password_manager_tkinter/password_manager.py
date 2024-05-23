@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox  # 이건 클래스가 아니라 module 이라 * 해도 따로 import 해야해.
 
 LOGO_IMAGE_PATH = 'logo.png'
 
@@ -14,6 +15,7 @@ ENTER_BTN_WIDTH = 36
 
 SAVE_FILE_PATH = 'data.txt'
 
+
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
@@ -21,11 +23,16 @@ def save_to_txt():
     web = web_ety.get()
     email = email_ety.get()
     pw = pw_ety.get()
-    with open(SAVE_FILE_PATH, mode='a') as file:
-        file.write(f'{web} | {email} | {pw}\n')
-        web_ety.delete(0, END)
-        pw_ety.delete(0, END)
-        web_ety.focus()
+
+    save_ok = messagebox.askokcancel(title=web,
+                                     message=f'These are the details entered:\nEmail : {email}\nPassword : {pw}\nIs it ok to save?')
+
+    if save_ok:
+        with open(SAVE_FILE_PATH, mode='a') as file:
+            file.write(f'{web} | {email} | {pw}\n')
+            web_ety.delete(0, END)
+            pw_ety.delete(0, END)
+            web_ety.focus()
 
 
 # ---------------------------- UI SETUP ------------------------------- #
