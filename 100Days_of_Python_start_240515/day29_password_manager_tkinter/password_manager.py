@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox  # 이건 클래스가 아니라 module 이라 * 해도 따로 import 해야해.
 import random as rd
 import pyperclip
+import json
 
 LOGO_IMAGE_PATH = 'logo.png'
 
@@ -15,7 +16,8 @@ PW_ENTRY_WIDTH = 21
 PW_BTN_WIDTH = 15
 ENTER_BTN_WIDTH = 36
 
-SAVE_FILE_PATH = 'data.txt'
+SAVE_TXT_PATH = 'data.txt'
+SAVE_JSON_PATH = 'pw_data.json'
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
@@ -23,6 +25,7 @@ letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
            'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
+
 
 def generate_pw():
     letters_list = [rd.choice(letters) for _ in range(rd.randint(8, 10))]
@@ -33,8 +36,9 @@ def generate_pw():
     rd.shuffle(password_list)
     gen_pw = ''.join(password_list)
 
-    pw_ety.insert(0,gen_pw)
+    pw_ety.insert(0, gen_pw)
     pyperclip.copy(gen_pw)
+
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save_to_txt():
@@ -42,15 +46,28 @@ def save_to_txt():
     email = email_ety.get()
     pw = pw_ety.get()
 
+    new_data = {web: {
+        "email": email,
+        "password": pw
+    }}
+
     if len(web) * len(pw):
         save_ok = messagebox.askokcancel(title=web,
                                          message=f'These are the details entered:\nEmail : {email}\nPassword : {pw}\nIs it ok to save?')
         if save_ok:
-            with open(SAVE_FILE_PATH, mode='a') as file:
-                file.write(f'{web} | {email} | {pw}\n')
-                web_ety.delete(0, END)
-                pw_ety.delete(0, END)
-                web_ety.focus()
+            try:
+                with open(SAVE_JSON_PATH, mode='r') as data_file:
+                    # json load
+                    data = json.load(data_file)
+                    # json data update to dict
+                    data.update(new_data)
+            except:
+                with open(SAVE_JSON_PATH, mode='w') as data_file:
+                    json.dump(obj=new_data, fp=data_file, indent=4)
+            else:
+                with open(SAVE_JSON_PATH, mode='w') as data_file:
+                    # save data to json file
+                    json.dump(obj=data, fp=data_file, indent=4)
     else:
         messagebox.showinfo(title="Oops", message="Please don't leave any fields empty!")
 
