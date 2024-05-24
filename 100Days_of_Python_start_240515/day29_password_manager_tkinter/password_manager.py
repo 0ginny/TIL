@@ -28,6 +28,8 @@ symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
 
 def generate_pw():
+    pw_ety.delete(0, END)
+
     letters_list = [rd.choice(letters) for _ in range(rd.randint(8, 10))]
     nums_list = [rd.choice(numbers) for _ in range(rd.randint(2, 4))]
     symbols_list = [rd.choice(symbols) for _ in range(rd.randint(2, 4))]
@@ -58,16 +60,19 @@ def save_to_txt():
             try:
                 with open(SAVE_JSON_PATH, mode='r') as data_file:
                     # json load
-                    data = json.load(data_file)
-                    # json data update to dict
-                    data.update(new_data)
+                    data = json.load(data_file
             except:
                 with open(SAVE_JSON_PATH, mode='w') as data_file:
                     json.dump(obj=new_data, fp=data_file, indent=4)
             else:
+                # json data update to dict
+                data.update(new_data)
                 with open(SAVE_JSON_PATH, mode='w') as data_file:
                     # save data to json file
                     json.dump(obj=data, fp=data_file, indent=4)
+            finally :
+                web_ety.delete(0,END)
+                pw_ety.delete(0,END)
     else:
         messagebox.showinfo(title="Oops", message="Please don't leave any fields empty!")
 
