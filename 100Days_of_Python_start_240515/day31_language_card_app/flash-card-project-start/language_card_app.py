@@ -4,6 +4,8 @@ import random as rd
 
 # color
 BACKGROUND_COLOR = "#B1DDC6"
+FRONT_FONT_COLOR = 'black'
+BACK_FONT_COLOR = 'white'
 
 # window feature
 TITLE = 'Flashy'
@@ -31,7 +33,7 @@ POS_KO_Y = 263
 
 # font
 FONT_LANGUAGE = ('Arial', 30, 'italic')
-FONT_WORD = ('돋움', 60, 'bold')
+FONT_WORD = ('바탕', 60, 'bold')
 
 # btn feature
 BTN_RELIEF = 'flat'
@@ -44,13 +46,21 @@ words = []
 def data_load():
     global words
     data = pd.read_csv('1000_most_common_en_words.csv')
+    # {'en' : english , 'ko' : '한글'}, {...}... 스타일 records
     words = data.to_dict(orient='records')
 
 
 def change_word():
     idx = rd.randint(0, len(words) - 1)
-    card_canvas.itemconfig(word_canvas_lbl, text=words[idx]['en'])
+    card_canvas.itemconfig(card_canvas_img,image = front_card_img)
+    card_canvas.itemconfig(language_canvas_lbl, text = "English", fill = FRONT_FONT_COLOR)
+    card_canvas.itemconfig(word_canvas_lbl, text=words[idx]['en'], fill = FRONT_FONT_COLOR)
+    window.after(2000,show_meaning,idx)
 
+def show_meaning(idx):
+    card_canvas.itemconfig(card_canvas_img,image = back_card_img)
+    card_canvas.itemconfig(language_canvas_lbl, text = "한글", fill = BACK_FONT_COLOR)
+    card_canvas.itemconfig(word_canvas_lbl, text=words[idx]['ko'], fill= BACK_FONT_COLOR)
 
 def right():
     change_word()
@@ -75,7 +85,7 @@ if __name__ == '__main__':
     wrong_img = PhotoImage(file=WRONG_IMG_PATH)
     # canvas
     card_canvas = Canvas(width=CARD_WIDTH, height=CARD_HEIGHT, bg=BACKGROUND_COLOR, highlightthickness=0)
-    card_canvas.create_image(CARD_WIDTH / 2, CARD_HEIGHT / 2, image=front_card_img)
+    card_canvas_img = card_canvas.create_image(CARD_WIDTH / 2, CARD_HEIGHT / 2, image=front_card_img)
     language_canvas_lbl = card_canvas.create_text(POS_EN_X, POS_EN_Y, text="ENGLISH", font=FONT_LANGUAGE)
     word_canvas_lbl = card_canvas.create_text(POS_KO_X, POS_KO_Y, font=FONT_WORD, text="한글" )
 
