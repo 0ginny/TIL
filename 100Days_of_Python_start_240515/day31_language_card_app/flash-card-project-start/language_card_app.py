@@ -32,7 +32,7 @@ POS_KO_X = 400
 POS_KO_Y = 263
 
 # font
-FONT_LANGUAGE = ('Arial', 30, 'italic')
+FONT_LANGUAGE = ('바탕', 30, 'italic')
 FONT_WORD = ('바탕', 60, 'bold')
 
 # btn feature
@@ -42,6 +42,8 @@ BTN_BORDER = 1
 # 2. change word
 words = []
 
+def init_timer():
+    pass
 
 def data_load():
     global words
@@ -49,13 +51,14 @@ def data_load():
     # {'en' : english , 'ko' : '한글'}, {...}... 스타일 records
     words = data.to_dict(orient='records')
 
-
 def change_word():
+    global change_timer
+    window.after_cancel(change_timer)
     idx = rd.randint(0, len(words) - 1)
     card_canvas.itemconfig(card_canvas_img,image = front_card_img)
     card_canvas.itemconfig(language_canvas_lbl, text = "English", fill = FRONT_FONT_COLOR)
     card_canvas.itemconfig(word_canvas_lbl, text=words[idx]['en'], fill = FRONT_FONT_COLOR)
-    window.after(2000,show_meaning,idx)
+    change_timer = window.after(2000,show_meaning,idx)
 
 def show_meaning(idx):
     card_canvas.itemconfig(card_canvas_img,image = back_card_img)
@@ -77,7 +80,7 @@ if __name__ == '__main__':
     window.title(TITLE)
     window.resizable(RESIZABLE, RESIZABLE)
     window.config(bg=BACKGROUND_COLOR, padx=WIN_PAD_X, pady=WIN_PAD_Y)
-
+    change_timer = window.after(2000,init_timer)
     # images to photoimages
     back_card_img = PhotoImage(file=BACK_CARD_PATH)
     front_card_img = PhotoImage(file=FRONT_CARD_PATH)
@@ -86,8 +89,8 @@ if __name__ == '__main__':
     # canvas
     card_canvas = Canvas(width=CARD_WIDTH, height=CARD_HEIGHT, bg=BACKGROUND_COLOR, highlightthickness=0)
     card_canvas_img = card_canvas.create_image(CARD_WIDTH / 2, CARD_HEIGHT / 2, image=front_card_img)
-    language_canvas_lbl = card_canvas.create_text(POS_EN_X, POS_EN_Y, text="ENGLISH", font=FONT_LANGUAGE)
-    word_canvas_lbl = card_canvas.create_text(POS_KO_X, POS_KO_Y, font=FONT_WORD, text="한글" )
+    language_canvas_lbl = card_canvas.create_text(POS_EN_X, POS_EN_Y, text="언어", font=FONT_LANGUAGE)
+    word_canvas_lbl = card_canvas.create_text(POS_KO_X, POS_KO_Y, font=FONT_WORD, text="단어" )
 
     # Button
     right_btn = Button(image=right_img, bd=BTN_BORDER, highlightthickness=0, relief=BTN_RELIEF, command=right)
@@ -99,6 +102,5 @@ if __name__ == '__main__':
     right_btn.grid(row=2, column=2)
 
     data_load()
-    change_word()
 
     window.mainloop()
