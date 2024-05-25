@@ -1,4 +1,7 @@
 from tkinter import *
+import pandas as pd
+import random as rd
+
 # color
 BACKGROUND_COLOR = "#B1DDC6"
 
@@ -27,19 +30,42 @@ POS_KO_X = 400
 POS_KO_Y = 263
 
 # font
-FONT_EN = ('Arial', 40, 'italic')
-FONT_KO = ('바탕', 45, 'bold')
+FONT_LANGUAGE = ('Arial', 30, 'italic')
+FONT_WORD = ('돋움', 60, 'bold')
 
-#btn feature
+# btn feature
 BTN_RELIEF = 'flat'
 BTN_BORDER = 1
+
+# 2. change word
+words = []
+
+
+def data_load():
+    global words
+    data = pd.read_csv('1000_most_common_en_words.csv')
+    words = data.to_dict(orient='records')
+
+
+def change_word():
+    idx = rd.randint(0, len(words) - 1)
+    card_canvas.itemconfig(word_canvas_lbl, text=words[idx]['en'])
+
+
+def right():
+    change_word()
+
+
+def wrong():
+    change_word()
+
 
 # 1. ui 만들기
 if __name__ == '__main__':
     # window create
     window = Tk()
     window.title(TITLE)
-    window.resizable(RESIZABLE,RESIZABLE)
+    window.resizable(RESIZABLE, RESIZABLE)
     window.config(bg=BACKGROUND_COLOR, padx=WIN_PAD_X, pady=WIN_PAD_Y)
 
     # images to photoimages
@@ -50,15 +76,19 @@ if __name__ == '__main__':
     # canvas
     card_canvas = Canvas(width=CARD_WIDTH, height=CARD_HEIGHT, bg=BACKGROUND_COLOR, highlightthickness=0)
     card_canvas.create_image(CARD_WIDTH / 2, CARD_HEIGHT / 2, image=front_card_img)
-    en_canvas_lbl = card_canvas.create_text(POS_EN_X, POS_EN_Y, text="ENGLISH", font=FONT_EN)
-    ko_canvas_lbl = card_canvas.create_text(POS_KO_X, POS_KO_Y, font=FONT_KO, text="한글", )
+    language_canvas_lbl = card_canvas.create_text(POS_EN_X, POS_EN_Y, text="ENGLISH", font=FONT_LANGUAGE)
+    word_canvas_lbl = card_canvas.create_text(POS_KO_X, POS_KO_Y, font=FONT_WORD, text="한글" )
 
     # Button
-    right_btn = Button(image=right_img, bd=BTN_BORDER, highlightthickness=0, relief=BTN_RELIEF)
-    wrong_btn = Button(image=wrong_img, bd=BTN_BORDER, highlightthickness=0, relief=BTN_RELIEF)
+    right_btn = Button(image=right_img, bd=BTN_BORDER, highlightthickness=0, relief=BTN_RELIEF, command=right)
+    wrong_btn = Button(image=wrong_img, bd=BTN_BORDER, highlightthickness=0, relief=BTN_RELIEF, command=wrong)
 
     # positioning
     card_canvas.grid(row=1, column=1, columnspan=2)
     wrong_btn.grid(row=2, column=1)
     right_btn.grid(row=2, column=2)
+
+    data_load()
+    change_word()
+
     window.mainloop()
