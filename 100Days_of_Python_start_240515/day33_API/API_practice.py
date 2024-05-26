@@ -7,3 +7,6 @@ if response.status_code == 404 :
     raise Exception('That resource does not exist.')
 if response.status_code == 401 :
     raise Exception('You are not authorised to access this data .')
+
+data = response.json()
+print(data)
