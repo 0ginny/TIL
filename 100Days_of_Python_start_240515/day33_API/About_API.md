@@ -27,3 +27,15 @@ api의 주소? 정도로 생각하면 될 거 같아.
 우리가 request를 하면 api를 통해 respond가 오는 거지
 
 *** 보통 JSON 형태로 많이 관리돼.
+
+### API response code
+
+1xx : hold on (wait)
+
+2xx : Here you ho (success)
+
+3xx : go away (fail)
+
+4xx : you screwed up (wrong)
+
+5xx : i screwed up (sever wrong)
