@@ -39,3 +39,5 @@ api의 주소? 정도로 생각하면 될 거 같아.
 4xx : you screwed up (wrong)
 
 5xx : i screwed up (sever wrong)
+
+[HTTP Status Codes](https://www.webfx.com/web-development/glossary/http-status-codes/)
