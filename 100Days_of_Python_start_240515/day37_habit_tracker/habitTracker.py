@@ -1,6 +1,6 @@
 import requests
 import json
-
+import datetime as dt
 # api doc : https://docs.pixe.la/
 
 # 1. create user
@@ -37,4 +37,18 @@ headers = {
 # print(response.text)
 
 # 생성된 주소
-print(f'{graph_endpoint}/{graph_config["id"]}.html')
+# print(f'{graph_endpoint}/{graph_config["id"]}.html')
+
+# 3. post pixel
+post_endpoint = f"{graph_endpoint}/{graph_config['id']}"
+# print(post_endpoint)
+# datetime format : https://chancoding.tistory.com/222
+date_now = dt.datetime.now().strftime("%Y%m%d")
+# print(date_now)
+post_config = {
+    "date" :date_now,
+    "quantity" : "30",
+}
+
+# response = requests.post(url=post_endpoint,json=post_config,headers=headers)
+# print(response.text)
