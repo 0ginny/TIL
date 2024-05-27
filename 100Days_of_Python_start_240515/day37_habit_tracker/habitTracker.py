@@ -52,3 +52,23 @@ post_config = {
 
 # response = requests.post(url=post_endpoint,json=post_config,headers=headers)
 # print(response.text)
+
+# 4. put(update) data
+edit_date = date_now
+update_endpoint = f'{post_endpoint}/{edit_date}'
+
+update_config = {
+    "quantity" : "350"
+}
+
+# response = requests.put(url=update_endpoint,json=update_config,headers=headers)
+# print(response.text)
+
+
+# 5. delete data
+delete_date = date_now
+delete_endpoint = f'{post_endpoint}/{delete_date}'
+
+
+response = requests.delete(url=delete_endpoint,headers=headers)
+print(response.text)
