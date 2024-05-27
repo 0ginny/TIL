@@ -260,5 +260,7 @@ pyrightconfig.json
 
 100Days_of_Python_start_240515/day37_habit_tracker/secret.json
 
+100Days_of_Python_start_240515/**/*.json
+
 # End of https://www.toptal.com/developers/gitignore/api/python
 
