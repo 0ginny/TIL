@@ -29,32 +29,36 @@ HEADER = {
 }
 
 CONFIG = {
-    'query': "running for 2 hour",  # input("Tell me which exercises you did : ")
+    'query': input("Tell me which exercises you did : "),
     'weight_kg': MY_WEIGHT,
     'height_cm': MY_HEIGHT,
     'age': MY_AGE
 }
 
-# response = rq.post(url=NUTRITION_ENDPOINT, json=CONFIG, headers=HEADER)
-# print(response.text)
+rq_nutrition_excercise = rq.post(url=NUTRITION_ENDPOINT, json=CONFIG, headers=HEADER)
+nutrition_data = rq_nutrition_excercise.json()
 
 # 2. sheety 로 google sheet 수정하기
 # sheety url : https://dashboard.sheety.co/login
 SHEETY_ENDPOINT = f"https://api.sheety.co/{sheety_userCode}/{sheety_projectName}/{sheety_sheetName}"
 print(SHEETY_ENDPOINT)
 
-date = dt.datetime.now().strftime("%d/%m/%Y")
+now = dt.datetime.now()
+now_date = now.strftime("%d/%m/%Y")
+now_time = now.strftime("%H:%M:%S")
 
 # "workouts" 에서 s를 빼야해. 자연어 인식인가? 중복이 아닌 글자로 해야해.
-SHEETY_JSON = {
-    "workout": {
-        "date": date,
-        "time": "15:00:00",
-        "exercise": "Running",
-        "duration": "22",
-        "calories": "130"
+for exercise in nutrition_data["exercises"]:
+    SHEETY_JSON = {
+        "workout": {
+            "date": now_date,
+            "time": now_time,
+            "exercise": exercise["user_input"].title(),
+            "duration": exercise["duration_min"],
+            "calories": exercise["nf_calories"]
+        }
     }
-}
 
-rq_sheety_get = rq.post(url=SHEETY_ENDPOINT, json=SHEETY_JSON)
-print(rq_sheety_get.text)
+    rq_sheety_get = rq.post(url=SHEETY_ENDPOINT, json=SHEETY_JSON)
+    print(rq_sheety_get.text)
+
