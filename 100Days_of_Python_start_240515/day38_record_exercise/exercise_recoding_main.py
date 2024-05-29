@@ -1,6 +1,9 @@
 import json
 import requests as rq
 import datetime as dt
+import googletrans
+
+translater = googletrans.Translator()
 
 MY_WEIGHT = 75
 MY_HEIGHT = 175.6
@@ -27,7 +30,7 @@ HEADER = {
 }
 
 CONFIG = {
-    'query': input("Tell me which exercises you did : "),
+    'query': translater.translate(input("금일 무슨 운동을 했는지 적어주세요 : "),dest='en').text,
     'weight_kg': MY_WEIGHT,
     'height_cm': MY_HEIGHT,
     'age': MY_AGE
