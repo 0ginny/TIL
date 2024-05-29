@@ -13,8 +13,6 @@ NUTRITION_KEY = secret_data['nutrition_key']
 sheety_userCode = secret_data['sheety_userCode']
 sheety_projectName = secret_data['sheety_projectName']
 sheety_sheetName = secret_data['sheety_sheetName']
-sheety_name = secret_data['sheety_name']
-sheety_email = secret_data['sheety_email']
 
 # 1. nutrition data 불러오기
 
