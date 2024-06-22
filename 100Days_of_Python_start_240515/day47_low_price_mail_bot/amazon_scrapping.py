@@ -10,7 +10,6 @@ port = 587
 
 target_time = "21:20"
 target_price = 130
-msg = f"Subject:Amazon HDD sale!\n\n"
 product_url = "https://www.amazon.com/Seagate-Expansion-Desktop-Drive-Black/dp/B07VS8QCXC/ref=sr_1_1?crid=1YXA3ADINFS8O&dib=eyJ2IjoiMSJ9.O-iz_OxFgbx8bLQuv31KFNq9EqEsv06BvQkuwEn6cNPNtFGUdYqwHmnbzkunELII3GzVPoGIDiQUnkTCGdDqjQly1Fhy8RbRdvxYRjrrcAG4n8hLu605tUVwzGp_Ft1N9Nz7RQqs26WYAQsuENh_GXyxzssO78dshrh_jodARrBN_Dp8LGOVPPKvhLVyFw7tui9ggRl03cAFSKPv2iVV-MXw-Z3-lIMBG3QXB21Khso.I3JpZThvqbKGyQYrEMFHxSSXuMTPDdCwL__aAMPv4Mo&dib_tag=se&keywords=portable%2Bhard%2Bdisk%2B8tb&qid=1719035880&sprefix=portablehard%2Bdisk%2B8tb%2Caps%2C221&sr=8-1&th=1"
 
 
@@ -23,7 +22,6 @@ if __name__ == "__main__":
     soup = BeautifulSoup(response.text, 'lxml')
     object_price = soup.select_one(
         "td._product-comparison-desktop_desktopFaceoutStyle_asin-0__3hzbG span span.a-offscreen")
-
     price = float(object_price.getText().strip('$'))
     print("price get")
     if price <= target_price:
@@ -33,10 +31,12 @@ if __name__ == "__main__":
             MY_EMAIL = data["MY_EMAIL"]
             TOKEN_PW = data["TOKEN_PW"]
             TO_MAIL = data["TO_MAIL"]
+        msg = f"Subject:Amazon HDD sale! ${price} !!\n\n"
 
         msg += f"HDD 5TB price is {price} !!\n"
         msg += f'판매 링크\n{product_url}'
-
+        # asw 용 encoding
+        msg = msg.encode('utf8')
         # mail 보내기
         with smtplib.SMTP(smtp, port=port) as connection:
             connection.starttls()
@@ -49,7 +49,7 @@ if __name__ == "__main__":
         print("mail send")
     # 1시간 마다 실행
     else:
-        time.sleep(3600)
+        time.sleep(60)
 
 # --------- 원하는 옵션 코드 찾기 -------------
 # print(soup.prettify())
