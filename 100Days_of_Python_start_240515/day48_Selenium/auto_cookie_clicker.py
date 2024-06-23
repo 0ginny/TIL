@@ -34,7 +34,7 @@ for product in products:
 def click_cookie(interber=0.01):
     try:
         cookie.click()
-        time.sleep(interber)
+        # time.sleep(interber)
     except Exception:
         pass
 
@@ -49,7 +49,7 @@ def buy(name, interber=20):
         price = menu.text.split(' - ')[-1]
         store_dict[name] = int(price.replace(',', ''))
     except Exception:
-        print('error exist')
+        pass
 
 
 
