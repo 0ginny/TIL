@@ -11,9 +11,9 @@ def hello_world():
     return 'Hello, World!'
 
 # 변수를 입력할 때는 <>안에 넣기
-@app.route('/username/<name>')
+@app.route('/username/<name>/<int:age>')
 def greet(name):
-    return f'Hello {name}!!'
+    return f'my name is {name} ,and {number} years old !!'
 
 # window는 set으로 해야해.
 # terminal 에 실행 (Command Prompt 로 실행)
