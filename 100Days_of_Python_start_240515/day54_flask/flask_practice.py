@@ -22,4 +22,5 @@ def greet(name):
 
 # 두번째 방법
 if __name__ == "__main__":
-    app.run()
+    # debug를 넣으면 수정하는 즉시 바로 반영이됨
+    app.run(debug=True)
