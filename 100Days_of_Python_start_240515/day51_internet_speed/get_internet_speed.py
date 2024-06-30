@@ -2,17 +2,20 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+# chrome driver download
+from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
 
 url = "https://www.speedtest.net/"
 
 chrome_options = webdriver.ChromeOptions()
-# chrome_options.add_experimental_option('detach',True)
+chrome_options.add_experimental_option('detach',True)
 # headless mode
 # 윈도우 사이즈가 없으면 click에러가 생김. window가 작을 때 element가 생성되지 않을 수 있나봐
-chrome_options.add_argument('--window-size=1920,1080')
-chrome_options.add_argument("--headless")
-
-driver = webdriver.Chrome(options=chrome_options)
+# chrome_options.add_argument('--window-size=1920,1080')
+# chrome_options.add_argument("--headless")
+driver = webdriver.Chrome(ChromeDriverManager().install())
+# driver = webdriver.Chrome(options=chrome_options)
 driver.get(url)
 # 로딩 대기시간 sec
 
@@ -39,3 +42,4 @@ print(f'download speed : {down_speed.text} Mbps')
 wait.until(EC.text_to_be_present_in_element((By.XPATH, upload_xpath), '.'))
 upload_speed = driver.find_element(By.XPATH, upload_xpath)
 print(f'upload speed : {upload_speed.text} Mbps')
+
