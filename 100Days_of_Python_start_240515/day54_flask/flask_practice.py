@@ -10,11 +10,16 @@ print(Flask.__name__)
 def hello_world():
     return 'Hello, World!'
 
+# 변수를 입력할 때는 <>안에 넣기
+@app.route('/username/<name>')
+def greet(name):
+    return f'Hello {name}!!'
+
 # window는 set으로 해야해.
 # terminal 에 실행 (Command Prompt 로 실행)
 # cd 100Days_of_Python_start_240515/day54_flask
 # set FLASK_APP=flask_practice.py
 
 # 두번째 방법
-# if __name__ == "__main__":
-#     app.run()
+if __name__ == "__main__":
+    app.run()
