@@ -9,12 +9,12 @@ from webdriver_manager.chrome import ChromeDriverManager
 url = "https://www.speedtest.net/"
 
 chrome_options = webdriver.ChromeOptions()
-chrome_options.add_experimental_option('detach',True)
+# chrome_options.add_experimental_option('detach',True)
 # headless mode
 # 윈도우 사이즈가 없으면 click에러가 생김. window가 작을 때 element가 생성되지 않을 수 있나봐
-# chrome_options.add_argument('--window-size=1920,1080')
-# chrome_options.add_argument("--headless")
-driver = webdriver.Chrome(ChromeDriverManager().install())
+chrome_options.add_argument('--window-size=1920,1080')
+chrome_options.add_argument("--headless")
+driver = webdriver.Chrome(options=chrome_options)
 # driver = webdriver.Chrome(options=chrome_options)
 driver.get(url)
 # 로딩 대기시간 sec
