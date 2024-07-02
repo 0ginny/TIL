@@ -44,12 +44,14 @@ def is_authenticated(func):
 @app.route('/set/<name>')
 def setting(name):
     global user
+
     user = User(name)
     user.logged = True
+    return f"seting to {user.name}"
 
 
-@app.route('/post')
 @is_authenticated
+@app.route('/post')
 def post(user):
     return f"This is {user.name}'s new blog post"
 
