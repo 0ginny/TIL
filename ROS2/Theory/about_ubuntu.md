@@ -6,6 +6,12 @@
   - 이후 터미널 실행할 때마다
     - sudo apt update
 
+### 처음 실행시 에러에 대해서
+
+- [terminal이 안열릴 때](https://code-lab1.tistory.com/309)
+  - korea로 바꿔도 되긴 했음
+- [username is not in the sudoers file.](https://veganwithbacon.tistory.com/496)
+
 #### virtualBox 화면 스케일링 수정
 
 - sudo apt install builid-essential gcc make perl dkms
