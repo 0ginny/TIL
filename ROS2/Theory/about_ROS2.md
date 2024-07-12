@@ -23,4 +23,7 @@ ROS 는 robot operating system 이야 (미들웨어와 프레임워크의 중간
         - [ubuntu cite](https://ubuntu.com/)
         - [virtualBox cite](https://www.virtualbox.org/)
         - virtualBox 를 통해 ubuntu.iso 파일로 가상환경 생성
-
+      - [ubuntu 설치](about_ubuntu.md)
+    - 원하는 버전 클릭 -> installation 클릭
+      - Debian packages 클릭
+      - 설명해주는 스텝을 따라가
