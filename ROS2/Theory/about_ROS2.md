@@ -27,3 +27,17 @@ ROS 는 robot operating system 이야 (미들웨어와 프레임워크의 중간
     - 원하는 버전 클릭 -> installation 클릭
       - Debian packages 클릭
       - 설명해주는 스텝을 따라가
+
+### ROS2 SETUP
+
+- terminal : gedit ~/.bashrc
+- 맨 밑에 작성 : source /opt/ros/{내가다운받은 ROS}}/setup.bash
+  - ros 명 모르겠으면 cd /opt/ros/ 로 들어가서 확인해.
+
+### ros2 실행 확인
+
+- test용 예제
+  - 터미널 : ro2 run demo_nodes_cpp talker
+    - 신호 생성 코드
+  - 터미널 : ros2 run demo_nodes_cpp listener
+    - 신호 수신 코드
