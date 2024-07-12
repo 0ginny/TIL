@@ -15,3 +15,21 @@
 - 가상컴퓨터 끄고 다시 시작
 - 만약 안되면 3번 부터 다시.
 
+### 유용한 도구 모음
+
+#### terminater
+
+터미널을 분할해서 여러 터미널을 한번에 볼 수 있어.
+
+sudo apt install terminator
+
+[단축키](https://shanepark.tistory.com/313)
+
+#### pip
+
+sudo apt install python3-pip
+
+#### gedit
+
+터미널에서 문서를 확인할 수 있도록 하는 명령어
+
