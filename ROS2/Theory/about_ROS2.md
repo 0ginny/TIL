@@ -46,10 +46,38 @@ ROS 는 robot operating system 이야 (미들웨어와 프레임워크의 중간
 
 #### colcon install
 
-- 자동 완성을 도와주는 툴이래
+- 자동 완성을 도와주는 툴이래 ??
+- workspace를 만드는 툴인가?
 
 - sudo install python3-colcon-common-extensions
 - gedit ~/.bashrc
   - source /urc/share/colcon_argcomplet/hook/cocln-argcomplete.bash
 
 #### Create Workspace
+
+- 새 폴더 생성 : mkdir
+- cd 새폴더
+- 저장소 생성 : mkdir src
+- 워크스페이스 생성 : build colcon
+- cd ./install
+- ls 해서 setup.bash 확인
+
+- 다시 최상단으로 와서 gedit source setup 작성
+  (기존 setup 밑에)
+
+
+#### [파이썬 패키지 생성](https://hostramus.tistory.com/112)
+
+- 패키지는 예를 들어, 카메라 기능을 넣을 패키지, 암 제어용 패키지 이런 식으로 기능들을 저장해 놓는 거야.
+
+- 워크스페이스의 src 폴더에 들어가
+- 패키지 생성 : ros2 pkg create
+
+- 그 후 새로 터미널 들어가서 해당 패키지 폴더로 이동
+- colcon build  (컴파일)
+  - 만약 여기서 에러가 생긴다면 (humble ros2 에서 종종 생김)
+    - 새 터미널 : pip3 list | grep setuptools
+      - pip install setuptools==58.2.0
+  - 하나의 패키지만 실행하려면
+    - colcon build --packages-select {package name}
+    
