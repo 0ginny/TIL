@@ -41,3 +41,15 @@ ROS 는 robot operating system 이야 (미들웨어와 프레임워크의 중간
     - 신호 생성 코드
   - 터미널 : ros2 run demo_nodes_cpp listener
     - 신호 수신 코드
+
+### 본격적인 ros2 시작
+
+#### colcon install
+
+- 자동 완성을 도와주는 툴이래
+
+- sudo install python3-colcon-common-extensions
+- gedit ~/.bashrc
+  - source /urc/share/colcon_argcomplet/hook/cocln-argcomplete.bash
+
+#### Create Workspace
