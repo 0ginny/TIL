@@ -99,3 +99,11 @@ ROS 는 robot operating system 이야 (미들웨어와 프레임워크의 중간
   - touch {node}.py
   - 여기서 코드 짜기 
     - ***단 맨 윗줄에 #! /usr/bin/python 이렇게 인터프리터 작성해줘야 ros에서 쓸 수 있음.
+
+### Ros2 rcl 이란?
+
+rcl 은 ros2 customer library 의 약자로 사용자가 활용하는 핵심 기능을 모두 담고 있어.
+
+dds 란 data distribution service 로 이걸로 모든 연결을 제어할 수 있어.
+
+rcl은 가장 낮은 단계의 라이브러리로 [미들웨어](https://aws.amazon.com/ko/what-is/middleware/) 가 있는 브릿지 역할을 해.
