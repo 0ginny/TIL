@@ -1,0 +1,1 @@
+[Pytorch loss 적용방식](https://blog.naver.com/myohyun/221402187012)
