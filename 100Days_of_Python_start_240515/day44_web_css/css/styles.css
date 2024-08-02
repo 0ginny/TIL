@@ -1,6 +1,8 @@
 body {
     margin: 0;
     text-align: center;
+    /* font-family: Georgia, Times, Times New Roman, serif; */
+
 }
 
 .top-container {
@@ -24,7 +26,7 @@ body {
     width: 200px;
     height: 200px;
     /* 상대적 포지션은 원래 html 에서 위치해야할 곳을 기준으로 변경 */
-    position: relative; 
+    position: relative;
     left: 200px;
 }
 
@@ -33,6 +35,24 @@ h1 {
     font-size: 2em;
     margin: 0 auto;
     width: 20%;
+    font-family: "Dancing Script", cursive;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+}
+
+p {
+    font-family: "Gupter", serif;
+    font-weight: 400;
+    font-style: normal;
+
+}
+
+h2 {
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
 }
 
 .top-cloud {
