@@ -57,22 +57,17 @@ input = sys.stdin.readline
 
 N = int(input())
 M = int(input())
-position = list(map(int, input().split()))
+pos = list(map(int, input().split()))
 # print(position)
+dist = set()
+for n in range(1,M):
+    diff = pos[n] - pos[n-1]
+    temp = diff//2 +1  if diff % 2 else diff//2
+    dist.add(temp)
 
-# 한번 틀렸어
-# 모든 경우의 수를 다 포용하는지 살펴봐
-for h in range(1, 50000):  # 높이 1 ~ 50000 까지 해야 100000 N 개의 굴다리 모두 수용가능
-    last = 0 # 불 켜진 최대 거리
-    fin = False  # 해당 h 에서 이미 전체가 True가 됨
-    for p in position:  # 모든 포지션 선택
-        # 이전 라스트보다 p -h 가 클경우 실패
-        if p - h > last:
-            break
-        last = p + h
-        if last >= N :
-            fin = True
-            break
-    if fin == True:
-        break
+if dist :
+    maxh = max(dist)
+else : maxh = 0
+h = max(pos[0],maxh,N-pos[-1])
 print(h)
+
