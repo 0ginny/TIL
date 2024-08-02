@@ -10,23 +10,27 @@ body {
     background-color: red;
     width: 200px;
     height: 200px;
-    position: relative;
-    left: 200px;
+    /* 절대적 포지션을 부모요소 기준으로 여백을 주는것 */
+    position: absolute;
+    left: 300px;
 }
 
 .bottom-container {
     background-color: blue;
     width: 200px;
     height: 200px;
+    /* 상대적 포지션은 원래 html 에서 위치해야할 곳을 기준으로 변경 */
+    position: relative; 
+    left: 200px;
 }
+
 
 h1 {
-    h1 {
-        font-size: 2em;
-        margin-block-start: 0;
-        margin-block-end: 0;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px;
-
-    }
+    font-size: 2em;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    position: fixed;
 }
+
