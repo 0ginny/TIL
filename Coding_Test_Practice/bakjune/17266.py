@@ -32,11 +32,23 @@
 --- chk를 채우는 형식으로 하니 시간초과가 일어나
 단순 숫자 연산으로 가야해.
 
+---단순 숫자도 시간초과야
+for 문을 1번만 써야해
+그 후 모든 pos[n] - pos[n-1] 을 구해
+그 중 가장 큰 거의 //2 +1 을 선택해
+    만약 p[0]-h = 0 인 h 보다 큰지 확인
+    N-p[-1] <= h 인지 확인
+
+
 반례 :
 7
 2
 0 5
 answer : 3
+4
+2
+0 4
+answer : 2
 '''
 
 import sys
@@ -51,28 +63,14 @@ position = list(map(int, input().split()))
 # 한번 틀렸어
 # 모든 경우의 수를 다 포용하는지 살펴봐
 for h in range(1, 50000):  # 높이 1 ~ 50000 까지 해야 100000 N 개의 굴다리 모두 수용가능
-    chk = [False] * (N + 1)  # 굴다리는 0 ~ N 까지야
+    last = 0 # 불 켜진 최대 거리
     fin = False  # 해당 h 에서 이미 전체가 True가 됨
     for p in position:  # 모든 포지션 선택
-        minl = max(0, p - h)  # True 로 채울 시작위치
-        ## 이 부분에서 틀린 거였어. 불이 켜지는 건 p+h-1 까지 켜져야 그 사이 빈 공간이 없는거야
-        if p == position[-1]: # 마지막 가로등은 채우는게 맞네
-            maxl = min(N + 1, p + h + 1)  # False로 채울 끝 위치
-        else:
-            maxl = min(N + 1, p + h)  # False로 채울 끝 위치
-        # print(f'{p} 에서 높이 {h}')
-        for i in range(minl, maxl):  # 해당 가로등 범위 전부 True 전환
-            chk[i] = True
-        # print(chk)
-
-        # 슬라이싱으로 체크한 경우 시간초과
-        # 만약 켜진 가로등 이전에 False가 있는 경우 position 종료 h 리뉴얼
-        if minl != 0:
-            if chk[minl - 1] == False or chk[0] == False:
-                break
-        # 현재 상황은 maxl 이전은 모두 True 인 경우야
-        # 마지막 칸이 True 인 경우 모두가 켜진 경우야
-        if chk[-1] == True:
+        # 이전 라스트보다 p -h 가 클경우 실패
+        if p - h > last:
+            break
+        last = p + h
+        if last >= N :
             fin = True
             break
     if fin == True:
