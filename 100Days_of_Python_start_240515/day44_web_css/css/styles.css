@@ -50,6 +50,11 @@ p {
 
 }
 
+.intro {
+    font-weight: normal;
+    line-height: 2;
+}
+
 h2, h3 {
     font-family: "Nunito", sans-serif;
     font-optical-sizing: auto;
