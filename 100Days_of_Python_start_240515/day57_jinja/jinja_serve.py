@@ -21,9 +21,10 @@ def guess(name):
     gender_api = rq.get(f"https://api.genderize.io?name={name}")
     age = age_api.json()["age"]
     gender = gender_api.json()["gender"]
-    return f"<h1>Hey {name},</h1>" \
-           f"<h2>I think you are {gender},</h2>" \
-           f"<h3>And maybe {age} years old."
+    return render_template("guess_age_gender.html",
+                           name=name,
+                           age=age,
+                           gender=gender)
 
 
 
