@@ -6,7 +6,7 @@
 </head>
 <body>
     {% for post in blog_data: %}
-        {% if post['id'] == 2 : %}
+        {% if post['id'] == target_id : %}
         <h1>{{post['title']}}</h1>
         <h2>{{post['subtitle']}}</h2>
         <p>{{post['body']}}</p>
