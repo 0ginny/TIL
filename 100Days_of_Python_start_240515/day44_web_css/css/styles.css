@@ -35,6 +35,14 @@ h1 {
     font-style: normal;
 }
 
+h1, h2 {
+    color: #66bf94;
+}
+
+h3, a {
+    color: #119e4c;
+}
+
 p {
     font-family: "Gupter", serif;
     font-weight: 400;
