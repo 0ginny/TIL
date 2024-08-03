@@ -13,21 +13,11 @@ body {
 }
 
 .middle-container {
-    background-color: red;
-    width: 200px;
-    height: 200px;
-    /* 절대적 포지션을 부모요소 기준으로 여백을 주는것 */
-    position: absolute;
-    left: 300px;
+    padding-top: 20px;
 }
 
 .bottom-container {
-    background-color: blue;
-    width: 200px;
-    height: 200px;
-    /* 상대적 포지션은 원래 html 에서 위치해야할 곳을 기준으로 변경 */
-    position: relative;
-    left: 200px;
+
 }
 
 
@@ -37,7 +27,7 @@ h1 {
     width: 20%;
     font-family: "Dancing Script", cursive;
     font-optical-sizing: auto;
-    font-weight: <weight>;
+    font-weight: bold;
     font-style: normal;
 }
 
@@ -48,10 +38,10 @@ p {
 
 }
 
-h2 {
+h2, h3 {
     font-family: "Nunito", sans-serif;
     font-optical-sizing: auto;
-    font-weight: <weight>;
+    font-weight: bold;
     font-style: normal;
 }
 
@@ -65,4 +55,13 @@ h2 {
     position: absolute;
     left: 30%;
     bottom: 350px;
+}
+
+.profile img {
+    width: 20%;
+    height: 20%;
+}
+
+.skill-img {
+    width: 20%;
 }
