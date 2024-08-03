@@ -2,7 +2,7 @@ body {
     margin: 0;
     text-align: center;
     /* font-family: Georgia, Times, Times New Roman, serif; */
-
+    font-size: 20px;
 }
 
 .top-container {
@@ -22,9 +22,13 @@ body {
 
 
 h1 {
-    font-size: 2em;
+    /* 이렇게 비율로 크기를 정하면
+    부모 속성을 기준으로 해서 다중 곱이 될 수 있어 */
+    /* font-size: 3em; */
+    /* 그래서 상위속성을 무시하는 root 를 설정할 수 있어 */
+    font-size: 4rem;
     margin: 0 auto;
-    width: 20%;
+    
     font-family: "Dancing Script", cursive;
     font-optical-sizing: auto;
     font-weight: bold;
@@ -45,15 +49,19 @@ h2, h3 {
     font-style: normal;
 }
 
+h2 {
+    font-size: 2rem;
+}
+
 .top-cloud {
     position: absolute;
     top: 50px;
-    right: 30%;
+    right: 20%;
 }
 
 .bottom-cloud {
     position: absolute;
-    left: 30%;
+    left: 20%;
     bottom: 350px;
 }
 
