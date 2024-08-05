@@ -27,8 +27,6 @@
     - list끼리 알파벳 정리 (root(N)* root(N)lnroot(N) -- 가능할 거 같은데?)
     - 해당 리스트 전부 더하기
 
-
-
 '''
 
 import sys
@@ -46,10 +44,6 @@ for w in wlist:
             wdict[w] += 1
         except :
             wdict[w] = 1
-
-val_list = list(wdict.values())
-
-ans_list = [[] for _ in range(max(val_list)+1)]
 
 word_list = list(wdict.keys())
 word_list.sort(key= lambda x : (-wdict[x],-len(x),x))
