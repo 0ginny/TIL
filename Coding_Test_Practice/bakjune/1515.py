@@ -33,7 +33,7 @@
 그럼 순서대로 다 더할때 해당 숫자가 있으면 전부 제거해.
 그 값이 입력과 같으면 그 때의 cnt 를 출력해
 
-
+이것도 아니야
 
 '''
 
@@ -41,25 +41,17 @@ import sys
 
 input = sys.stdin.readline
 
-nlist = list(str(input().rstrip()))
-# print(nlist)
+chk_list = list(str(input().rstrip()))
+chk_set = set(chk_list)
 cnt = 1
-test = []
-
-for i in range(len(nlist)):
-    # print(f'n ; {nlist[i]}, i : {i}')
-    n = nlist[i]
-    if n in test:
-        test.remove(n)
-        # print('제거')
-        continue
-
-    while 1:
-        test = list(str(cnt))
-        # print(test)
-        cnt+=1
-        if n in test:
-            test.remove(n)
-            break
-
-print(cnt-1)
+ans_list = []
+while 1 :
+    nlist = list(str(cnt))
+    for n in nlist:
+        if n in chk_set :
+            ans_list.append(str(n))
+            print(ans_list)
+    if ans_list == chk_list:
+        break
+    cnt+= 1
+print(cnt)
