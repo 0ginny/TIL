@@ -34,24 +34,45 @@
 그 값이 입력과 같으면 그 때의 cnt 를 출력해
 
 이것도 아니야
+-----
 
+이전 꺼 반례 찾아보자
+
+01
+
+정답 11
+출력 10
 '''
 
+
 import sys
+from collections import deque
 
 input = sys.stdin.readline
 
-chk_list = list(str(input().rstrip()))
-chk_set = set(chk_list)
+nlist = list(str(input().rstrip()))
+# print(nlist)
 cnt = 1
-ans_list = []
-while 1 :
-    nlist = list(str(cnt))
-    for n in nlist:
-        if n in chk_set :
-            ans_list.append(str(n))
-            print(ans_list)
-    if ans_list == chk_list:
-        break
-    cnt+= 1
-print(cnt)
+test = deque()
+
+for n in nlist:
+
+    if n in test :
+        while 1:
+            p = test.popleft()
+            if p == n:
+                break
+        continue
+    while 1:
+        for j in list(str(cnt)):
+            test.append(j)
+        # print(test)
+        cnt+=1
+        if n in test:
+            while 1 :
+                p = test.popleft()
+                if p == n :
+                    break
+            break
+
+print(cnt-1)
