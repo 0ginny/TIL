@@ -1,6 +1,6 @@
 '''
 시작 : 10:57
-
+종료 : 11:22
 0. 문제이해
 0과 1로 이루어진 문자열
 $S$를 보았다.
@@ -36,9 +36,13 @@ import sys
 input = sys.stdin.readline
 
 S = list(str(input().rstrip()))
-o = S.count('1')
-l =len(S)
-z = l - o
+o = 0
+z = 0
+for ss in S :
+    if ss == '1':
+        o += 1
+    else :
+        z += 1
 
 o /= 2
 z /= 2
