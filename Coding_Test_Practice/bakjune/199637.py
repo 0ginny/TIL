@@ -32,6 +32,12 @@ score 가 같으면 먼저 나온 거
 sort 를 하더라도 이전 순서대로 출력을 해야해.
 그후 idx +=  1 하면서 비교 : 10^5
 가능
+---------------
+runtime error index
+index문제면 list가 문제야
+case의 문제인가봐
+
+
 '''
 
 import sys
@@ -50,19 +56,21 @@ for _ in range(N): #10^5
     except KeyError:
         label_dict[score] = label
 
-raw_case = [int(input()) for _ in range(M)]
+raw_case = [int(input()) for _ in range(M)] # 인덱스 문제 있을 수 없음
 # sort 전 index 저장
 
-case = sorted(raw_case)
+case = sorted(raw_case) # index 문제 없음
 
 ans = {}
 cnt = 0
 for (s,l) in label_dict.items():
-    while case[cnt] <= s:
-        ans[case[cnt]] = l
-        cnt+=1
-        if cnt == M:
-            break
+    try :
+        while case[cnt] <= s: # cnt 가 없는 값일 수 있나? 그치 while break 후 for 문이 계속 진행되면
+            ans[case[cnt]] = l
+            cnt+=1
+    except IndexError:
+        break
+
 for c in raw_case:
     print(ans[c])
 
