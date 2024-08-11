@@ -23,6 +23,9 @@
     근데 그것보다 높은 주가가 생겼어. 그럼 그때 이전 * idex-극 idx 를 더해
         그리고 최대점 리뉴얼,
             그후 또 최대점보다 낮아진 곳에서 주가가 오르면 그냥 더하고, 최대점보다 높아진 경우만 바껴서
+
+거꾸로 하면 되었었네ㅣ...
+
 '''
 
 import sys
@@ -33,16 +36,15 @@ T = int(input())
 ans = []
 for _ in range(T):
     maxp = 0
-    maxi = 0
     total = 0
+    _ = input()
     dlist = list(map(int,input().split()))
-    lastp = 0
-    lasti = 0
-    for i,p in enumerate(dlist):
-        if i != 0
-            if lastp <= p: # 이전보다 주가가 높으면
-                total += p-lastp
+    for d in dlist[::-1]:
+        if maxp < d :
+            maxp = d
+        else :
+            total += maxp - d
+    ans.append(total)
 
-                if maxp <= p : # 최대 주가보다 클 경우
-                    total += (p-maxp) * (i-maxi)
-        last = p
+for a in ans:
+    print(a)
