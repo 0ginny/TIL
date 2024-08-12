@@ -1,30 +1,118 @@
 body {
     margin: 0;
+    text-align: center;
+    /* font-family: Georgia, Times, Times New Roman, serif; */
+    font-size: 20px;
 }
 
 .top-container {
     background-color: #E1F0DA;
+    /* 이게 상대적이어야 자식 요소가 절대적일때 기준이 될 수 있음 */
+    position: relative;
+    padding-top: 100px;
 }
 
 .middle-container {
-    background-color: red;
-    width: 200px;
-    height: 200px;
+    padding-top: 50px;
 }
 
-.bottom-container {
-    background-color: blue;
-    width: 200px;
-    height: 200px;
-}
+.bottom-container {}
+
 
 h1 {
-    h1 {
-        font-size: 2em;
-        margin-block-start: 0;
-        margin-block-end: 0;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px;
+    /* 이렇게 비율로 크기를 정하면
+    부모 속성을 기준으로 해서 다중 곱이 될 수 있어 */
+    /* font-size: 3em; */
+    /* 그래서 상위속성을 무시하는 root 를 설정할 수 있어 */
+    font-size: 4rem;
+    margin: 0 auto;
 
-    }
+    font-family: "Dancing Script", cursive;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+}
+
+h1,
+h2 {
+    color: #66bf94;
+}
+
+h3,
+a {
+    color: #119e4c;
+}
+
+p {
+    font-family: "Gupter", serif;
+    font-weight: 400;
+    font-style: normal;
+
+}
+
+.intro {
+    font-weight: normal;
+    line-height: 2;
+}
+
+h2,
+h3 {
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+.top-cloud {
+    position: absolute;
+    top: 50px;
+    right: 20%;
+}
+
+.bottom-cloud {
+    position: absolute;
+    left: 20%;
+    bottom: 350px;
+}
+
+.profile img {
+    width: 20%;
+    height: 20%;
+}
+
+.skill-row img {
+    width: 25%;
+    margin-bottom: 20px;
+}
+
+.python-img {
+    /* 글자로 그림을 둘러싸고 싶을 경우 float */
+    float: left;
+    margin-right: 30px;
+}
+
+.ai-img {
+    /* 글자로 그림을 둘러싸고 싶을 경우 float */
+    float: right;
+    margin-left: 30px;
+}
+
+.skill-row {
+    margin: 100px auto;
+    width: 50%;
+    text-align: left;
+    line-height: 1.5;
+}
+
+.python-description {
+    /* float를 하고 싶지 않은 경우 */
+    clear: left;
+}
+
+.ai-description {
+    clear: right;
 }
