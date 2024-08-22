@@ -75,6 +75,3 @@ for [l, h] in tlist[:maxi+maxdi-2:-1]:
 
 total += maxh * maxd
 print(total)
-
-
-
