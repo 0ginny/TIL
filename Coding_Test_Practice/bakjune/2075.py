@@ -1,5 +1,6 @@
 '''
 시작 : 400
+종료 : 502
 
 0. 문제 이해
 
@@ -33,6 +34,7 @@ N 번째 큰 수를 구하기
 -26% 에서 틀려..
 -- minn 을 푸시 후 동시에 팝 해서 해결 
 -- naneerror가 생겼어
+    -- minn 이 없는 경우?? N == 1 일때는 minn 없어.
 '''
 
 import sys
@@ -59,4 +61,7 @@ for i in range(N):
                 heapq.heappush(minh,a)
                 minn = heapq.heappop(minh)
 
-print(minn)
+if N != 1 :
+    print(minn)
+else :
+    print(a)
