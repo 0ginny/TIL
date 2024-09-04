@@ -27,47 +27,43 @@ P $	:$라는 문자를 커서 왼쪽에 추가함
   시간초과래 N*M 안됨
 
   시간복잡도 문제에선 굳이 결과를 리스트에 저장하지 않고, 변수에 저장했다가 마지막에 처리하면돼.
+  ----
+- 이중 que 로 커서 중심으로 빼고 넣으면 됨.
 '''
 
 import sys
+from collections import deque
 
 input = sys.stdin.readline
 
 word = list(input().rstrip())
+lq = deque(word)
+rq = deque([])
+
 
 M = int(input())
-l = len(word)
-idx = l
-
 
 def edit(commend):
     global idx, l
     if commend == 'L':
-        idx -= 1
+        if lq :
+            a = lq.pop()
+            rq.insert(0,a)
 
     elif commend == 'D':
-        idx += 1
-
-    # 여기부터 시간복잡도 문제가 있어.
+        if rq:
+            b = rq.popleft()
+            lq.append(b)
     elif commend == 'B':
-        if idx != 0:
-            word.pop(idx - 1)
-            l -= 1
-            idx -= 1
+        if lq:
+            lq.pop()
     else:
         _, x = commend.split()
-        word.insert(idx, x)
-        l += 1
-        idx += 1
-    if idx < 0:
-        idx = 0
-    if idx > l:
-        idx = l
-    # print(idx, word)
+        lq.append(x)
+
 
 
 for _ in range(M):
     commend = input().rstrip()
     edit(commend)
-
-print(''.join(word))
+print(''.join(lq)+''.join(rq))
