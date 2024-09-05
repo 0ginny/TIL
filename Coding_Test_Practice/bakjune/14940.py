@@ -50,6 +50,8 @@ ans = [[0]* W for _ in range(H)]
 q = deque([(i,j)])
 # print(q)
 # print(ans)
+chklist = [[False] * W for _ in range(H)]
+chklist[i][j] = True
 while q:
     (i, j) = q.popleft()
     for k in range(4):
@@ -58,10 +60,16 @@ while q:
 
         if 0 <= ni < H and 0 <= nj < W :
             if maplist[ni][nj] == 1:
-                if ans[ni][nj] == 0 :
+                if chklist[ni][nj] == False :
                     ans[ni][nj] = ans[i][j] + 1
                     q.append((ni,nj))
-                    # print(ans)
+                    chklist[ni][nj] = True
 
+# 갈 수 없는 곳 -1 로 채우기
+for ii in range(H):
+    for jj in range(W):
+        if maplist[ii][jj] == 1:
+            if chklist[ii][jj] == False :
+                ans[ii][jj] = -1
 for line in ans:
     print(' '.join(list(map(str,line))))
