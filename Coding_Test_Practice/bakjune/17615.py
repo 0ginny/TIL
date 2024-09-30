@@ -1,10 +1,20 @@
 '''
 시작 : 11:28
+종료 : 11:45
 
-왼쪽이든 오른쪽이든 블루와 레드를 나누기만 하는 최소 이동 횟수
-한 번에 이동 시킬 수 있어.
+문제를 똑바로 이해해.
+일단 하나의 색을 고르면 그것만 이동시켜야해. 일단 2가지 케이스가 있겠지,
+    근데 여기서 또 왼쪽으로 옮길지 오른쪽으로 옮길지 2가지 케이스가 있을거야.
+한번에 하나씩만 옮길 수 있어.
 
-이거 그냥 색이 달라지는 횟수 -1 /2 하면 되는 거 아닌가?
+1. 아이디어
+그리디? 이상하면 그리디인데,
+부루탈포스 가능? 4가지 케이스 N 500000
+
+가능하네
+
+그럼 일단 4가지 케이스로 이동을 시키고 최소 값을 구하면 됨.
+
 '''
 
 import sys
@@ -12,10 +22,56 @@ import sys
 input = sys.stdin.readline
 
 N = int(input())
-balls = input().rstrip()
-cnt = 0
-for i in range(1,N):
-    if balls[i-1] != balls[i] :
-        cnt += 1
+balls = list(input().rstrip())
 
-print(int(cnt/2))
+minc = sys.maxsize
+
+# 왼쪽 블루, 블루이동
+chk = False
+cnt = 0
+for b in balls:
+    if b == 'R':
+        chk = True
+    if chk:
+        if b == 'B':
+            cnt += 1
+
+minc = min(cnt,minc)
+
+# 왼쪽 블루, 레드이동
+chk = False
+cnt = 0
+for b in balls[::-1]:
+    if b == 'B':
+        chk = True
+    if chk:
+        if b == 'R':
+            cnt += 1
+
+minc = min(cnt,minc)
+
+# 왼쪽 레드, 블루이동
+chk = False
+cnt = 0
+for b in balls[::-1]:
+    if b == 'R':
+        chk = True
+    if chk:
+        if b == 'B':
+            cnt += 1
+
+minc = min(cnt,minc)
+
+# 왼쪽 레드, 레드이동
+chk = False
+cnt = 0
+for b in balls:
+    if b == 'B':
+        chk = True
+    if chk:
+        if b == 'R':
+            cnt += 1
+
+minc = min(cnt,minc)
+
+print(minc)
