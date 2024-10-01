@@ -12,8 +12,9 @@ k 개의 초밥을 연속적으로 먹어
 으로 가능하긴 해.
 
 근데 슬라이싱이 불가해서 for 문으로 했더니 시간초과야.
+투포인터로 가.
 '''
-
+from collections import deque
 import sys
 
 input = sys.stdin.readline
@@ -21,12 +22,15 @@ input = sys.stdin.readline
 N, d, k, c = map(int,input().split())
 
 rail = [int(input()) for _ in range(N)]
-
+q = deque(rail[-k:])
 maxt = 0
-for i in range(-k,N-k):
-    temp = [c]+[rail[a] for a in range(i,i+k)]
-    # print(temp)
-    t = len(set(temp))
-    maxt = max(t,maxt)
+for i in range(N):
+    q.popleft()
+    q.append(rail[i])
+    if c in q:
+        temp = len(set(q))
+    else :
+        temp = len(set(q)) + 1
+    maxt = max(temp,maxt)
 
 print(maxt)
