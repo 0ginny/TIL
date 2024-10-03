@@ -4,35 +4,26 @@ bfs 인데 chk 가 최대 사탕 갯수야
 시간복잡도 e6 가능
 왜 시간 초과지??
 
+그냥 dp로 가자
 
 '''
 
 import sys
-from collections import deque
 
 input = sys.stdin.readline
 
 H,W = map(int,input().split())
 
-maze = [list(map(int,input().split())) for _ in range(H)]
-maxc = [[0] * W for _ in range(H)]
+maze = [[0]* (W+1)] +[[0] +list(map(int,input().split())) for _ in range(H)]
 
+print(maze)
+dp = [[0] * (W+1) for _ in range(H+1)]
 
-di = [0, 1,1]
-dj = [1,0,1]
+for i in range(1,H+1):
+    for j in range(1,W+1):
+        dp[i][j] = max(dp[i-1][j-1] + maze[i][j]+maze[i][j-1],
+                       dp[i-1][j-1] + maze[i][j]+maze[i-1][j],
+                       dp[i-1][j] + maze[i][j],
+                       dp[i][j-1] + maze[i][j])
 
-q = deque([(0,0)])
-maxc[0][0] = maze[0][0]
-
-
-while q:
-    i,j = q.popleft()
-    for k in range(3):
-        ni = i + di[k]
-        nj = j + dj[k]
-
-        if 0 <= ni <H and 0 <= nj < W :
-            maxc[ni][nj] = max(maxc[i][j] + maze[ni][nj],maxc[ni][nj])
-            q.append((ni,nj))
-
-print(maxc[H-1][W-1])
+print(dp[H][W])
