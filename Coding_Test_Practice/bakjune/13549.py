@@ -13,24 +13,31 @@ X일 때 걷는다면 1초 후에 X-1 또는 X+1로 이동
 - 이진수로 비트마스킹 같은데
 
 '''
-
-
-# print(str(bin(5<<2 ^ 16)).count('1'))
-
+from collections import deque
 
 n, k = map(int,input().split())
 
-ans = 100000
-if k > n :
-    temp = str(bin(n ^ k)).count('1')
-    ans = min(temp, ans)
-    while k >= n :
-        n <<= 1
-        temp = str(bin(n ^ k)).count('1')
-        ans = min(temp,ans)
+ans = [-1] * 100001
+
+q = deque([n])
+ans[n] = 0
+
+while q :
+    print(q)
+    n = q.popleft()
+    if n == k :
+        break
+
+    for nn in [n+1, n-1, 2 * n]:
+        if 0<= nn <= 100000:
+            if nn  == 2 * n :
+                if ans[nn] == -1:
+                    q.appendleft(nn)
+                    ans[nn] = ans[n]
+            else :
+                if ans[nn] == -1 :
+                    q.append(nn)
+                    ans[nn] = ans[n] + 1
 
 
-else :
-    ans = n-k
-
-print(ans)
+print(ans[k])
