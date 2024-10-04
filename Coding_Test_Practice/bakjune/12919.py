@@ -19,23 +19,24 @@ BBAB, BAAB, AAAA,BAAA
 import sys
 
 input = sys.stdin.readline
-sys.setrecursionlimit(10**8)
 
 
 S = input().rstrip()
 T = input().rstrip()
-lt = len(T)
+ls= len(S)
 chk = 0
-def dfs(S):
+def dfs(T):
     global chk
     if not chk :
-        if len(S) == lt :
+        if len(T) == ls :
             if S == T :
                 chk = 1
                 return
             return
-        dfs(S+'A')
-        dfs('B'+S[::-1])
+        if T[-1] == 'A':
+            dfs(T[:-1])
+        if T[0] == 'B' :
+            dfs(T[1:][::-1])
 
-dfs(S)
+dfs(T)
 print(chk)
