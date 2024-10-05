@@ -14,9 +14,9 @@ coins = [int(input()) for _ in range(N)]
 
 ans = 0
 for c in coins[::-1]:
-    while K >= c :
-        ans += 1
-        K -= c
+
+    ans += K//c
+    K %= c
     if K == 0 :
         break
 print(ans)
