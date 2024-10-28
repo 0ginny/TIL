@@ -53,11 +53,6 @@ E = N -1
 robot = []
 cnt = 0
 while 1:
-    print(cnt+1)
-    print(S,E)
-    print(belt)
-    print(robot)
-    print()
 
     cnt += 1
 
@@ -84,7 +79,7 @@ while 1:
                 t = 0
             else : t = r + 1
 
-            if belt[t] > 0 :
+            if belt[t] > 0 and t not in temp:
                 belt[t] -= 1
                 # 2_1_1 종료 위치면 종료
                 if t == E :
